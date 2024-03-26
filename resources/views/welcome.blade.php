@@ -4,8 +4,9 @@
     img{
         height: 300px;
         width: 300px;
-        margin: 10px;
+      margin-left: 90px;
         border-radius:12px;
+
     }
 </style>
 <h1>Welcome to My Website</h1>
