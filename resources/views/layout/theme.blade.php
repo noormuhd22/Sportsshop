@@ -23,6 +23,7 @@
         .navbar {
             background-color: #007bff;
             height: 300px;
+          
         }
         .navbar-brand {
             color: #ffffff;
@@ -33,6 +34,11 @@
         }
         .nav-link:hover{
             color:black;
+        }
+        #right{
+          float: right;
+    
+          margin-left: 900px;
         }
       
     </style>
@@ -58,8 +64,8 @@
               <li class="nav-item">
                 <a class="nav-link " href="/setting">Setting</a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link " href="{{ route('logout') }}"><span class="material-symbols-outlined">
+              <li class="nav-item" id="right" >
+                <a class="nav-link "  href="{{ route('logout') }}"><span class="material-symbols-outlined">
                   logout
                   </span></a>
               </li>
