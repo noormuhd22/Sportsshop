@@ -15,4 +15,5 @@
 
 <img src="welcome-in-design-banner-template-for-web-vector-24072319.jpg" alt="img">
 
+
 @endsection
