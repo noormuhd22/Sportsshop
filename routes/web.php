@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Customer\CustomerController;
 use App\Http\Controllers\Product\ProductController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
 
 
@@ -52,14 +53,6 @@ Route::get('/setting',function(){
 });
 
 
-
-
-
-
-
-
-
-
 Route::get('/logout', function (Request $request) {
     $request->session()->forget('admin');
     return view('login');
@@ -75,4 +68,16 @@ Route::post('/login',[AuthController::class,'login'])->name('login');
 Route::get('/test', function(Request $request){
 
     dd($request->session()->all());
+});
+
+
+
+Route::get('/userloginpage',[UserController::class,'showLoginpage'])->name('userloginpage');
+Route::post('/userlogin',[UserController::class,'userLogin'])->name('userlogin');
+Route::get('/usersignuppage',[UserController::class,'userSignuppage'])->name('usersignuppage');
+Route::post('/usersignup',[UserController::class,'usersignup'])->name('usersignup');
+
+
+Route::get('/home',function(){
+    return view('user.userhome');
 });
