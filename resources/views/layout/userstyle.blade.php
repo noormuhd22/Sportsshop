@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,6 +6,8 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
 <style>
 body {
@@ -86,9 +87,9 @@ ul.topnav li.right {
 <ul class="topnav">
   <li><a href=""><img src="logo.jpg" alt="img"></a></li>
   <li><a href="/home">Home</a></li>
-  <li><a href="">Categories</a></li>
-  <li><a href="">Products</a></li>
-  <li><a href="">Contact us</a></li>
+  <li><a href="{{ route('categories') }}">Categories</a></li>
+  <li><a href="{{ route('products') }}">Products</a></li>
+  <li><a href="{{ route('contactus') }}">Contact us</a></li>
   
   <li class="right"><a href=""><span class="material-symbols-outlined">shopping_cart</span> </a></li>
   <li class="right dropdown" id="settingsDropdown"> <!-- Added id to the dropdown content -->
@@ -99,15 +100,13 @@ ul.topnav li.right {
       <a href="">Logout</a>
     </div>
   </li>
-
-
-
-
 </ul>
-
 
 @yield("section")
 
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 <script>
 function initializeDropdown() {
@@ -120,7 +119,6 @@ function initializeDropdown() {
 }
 
 initializeDropdown(); 
-
 </script>
 
 </body>

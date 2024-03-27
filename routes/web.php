@@ -7,6 +7,8 @@ use App\Http\Controllers\Product\ProductController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Product;
+
 
 
 /*
@@ -72,12 +74,53 @@ Route::get('/test', function(Request $request){
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//userloginandsignup
 Route::get('/userloginpage',[UserController::class,'showLoginpage'])->name('userloginpage');
 Route::post('/userlogin',[UserController::class,'userLogin'])->name('userlogin');
 Route::get('/usersignuppage',[UserController::class,'userSignuppage'])->name('usersignuppage');
 Route::post('/usersignup',[UserController::class,'usersignup'])->name('usersignup');
 
 
-Route::get('/home',function(){
-    return view('user.userhome');
+
+
+
+
+
+
+
+//user pages
+Route::get('/home', function () {
+    $products = Product::where('status', 0)->get(); // Removed extra semicolon
+return view('user.userhome', ['products' => $products]);
 });
+
+Route::get('/categories',function(){
+
+    return view('user.categories');
+})->name('categories');
+
+Route::get('/products',function(){
+
+    return view('user.products');
+})->name('products');
+
+
+Route::get('/contactus',function(){
+    return view('user.contactus');
+})->name('contactus');
+

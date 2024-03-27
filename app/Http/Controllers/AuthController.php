@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash; 
-
+use App\Models\loggeduser;
 use Illuminate\Support\Facades\DB;
 
 
@@ -66,7 +66,7 @@ class AuthController extends Controller
       
         if ($user && Hash::check($password, $user->password)) {
 
-            $request->session()->put('user',1);
+            $request->session()->put('admin',1);
             
             return redirect()->intended('/welcome');
         }
