@@ -169,4 +169,4 @@ Route::get('/products',function(){
     return view('user.products',['products'=>$products]);
 })->name('products');
 
-
+Route::get('/cart',[ActionController::class,'cart']);
