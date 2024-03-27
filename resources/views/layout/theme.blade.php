@@ -64,6 +64,9 @@
               <li class="nav-item">
                 <a class="nav-link " href="/setting">Setting</a>
               </li>
+              <li class="nav-item">
+                <a class="nav-link " href="/message">message</a>
+              </li>
               <li class="nav-item" id="right" >
                 <a class="nav-link "  href="{{ route('logout') }}"><span class="material-symbols-outlined">
                   logout

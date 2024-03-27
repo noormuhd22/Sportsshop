@@ -2,6 +2,11 @@
 @section('section')
 
 
+@if (session('success'))
+    <div class="alert alert-success">
+        {{ session('success') }}
+    </div>
+@endif
 <div class="container mt-6">
 
 <style>
@@ -27,18 +32,37 @@
         <h2>Contact Us</h2>
        
            
-        <form action="" method="post">
+        <form action="{{ route('submitform')  }}" method="post">
+           @csrf
             <div class="form-group">
                 <label for="email">Email address</label>
-                <input type="email" class="form-control" id="email" name="email" placeholder="Enter email" required>
+                <input type="email" class="form-control" id="email" name="email" placeholder="Enter email" value="{{ old('email') }}" required>
+            <div  class="text-danger">
+            @error('email')
+                {{ $message }}
+            @enderror    
+            </div> 
+            
             </div>
             <div class="form-group">
                 <label for="phone">Phone number</label>
-                <input type="tel" class="form-control" id="phone" name="phone" placeholder="Enter phone number" required>    
+                <input type="tel" class="form-control" id="mobile" name="mobile" placeholder="Enter phone number" required>    
+                <div  class="text-danger">
+                    @error('mobile')
+                        {{ $message }}
+                    @enderror    
+                    </div> 
+                    
             </div>
+            
             <div class="form-group">
                 <label for="message">Message</label>
                 <textarea class="form-control" id="message" name="message" rows="5" placeholder="Enter your message" required></textarea>
+                <div  class="text-danger">
+                    @error('message')
+                        {{ $message }}
+                    @enderror    
+                    </div> 
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>

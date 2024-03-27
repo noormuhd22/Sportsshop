@@ -8,7 +8,8 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Product;
-
+use Illuminate\Support\Facades\DB; // Import DB facade
+use App\Models\Message; //
 
 
 /*
@@ -73,6 +74,11 @@ Route::get('/test', function(Request $request){
 });
 
 
+Route::get('/message',function(){
+    $message = message::all();
+    return view('message',['message'=>$message]);
+});
+
 
 
 
@@ -105,22 +111,62 @@ Route::post('/usersignup',[UserController::class,'usersignup'])->name('usersignu
 
 //user pages
 Route::get('/home', function () {
-    $products = Product::where('status', 0)->get(); // Removed extra semicolon
+    $products = Product::where('status', 0)->get(); 
 return view('user.userhome', ['products' => $products]);
 });
+
+
+
+
+
 
 Route::get('/categories',function(){
 
     return view('user.categories');
 })->name('categories');
 
-Route::get('/products',function(){
-
-    return view('user.products');
-})->name('products');
 
 
 Route::get('/contactus',function(){
     return view('user.contactus');
 })->name('contactus');
+
+
+
+Route::post('/contactus/submit', function (Request $request) { 
+    
+    $request->validate([
+        'email' => 'required|email|max:255', 
+        'mobile' => 'required|numeric',
+        'message' => 'required'
+    ]);
+
+    DB::beginTransaction(); 
+    try {
+    
+        $message = new Message;
+        $message->email = $request->email;
+        $message->mobile = $request->mobile;
+        $message->message = $request->message;
+        $message->save();
+
+        DB::commit(); 
+
+    
+        return redirect('/contactus')->with('success', 'Message sent successfully');
+    } catch (\Exception $e) { 
+        DB::rollback(); 
+        return redirect()->back()->withErrors(['error' => 'An error occurred']);
+    }
+}) -> name('submitform');
+
+
+
+
+Route::get('/products',function(){
+     
+    $products = Product::where('status', 0)->get();
+    return view('user.products',['products'=>$products]);
+})->name('products');
+
 
