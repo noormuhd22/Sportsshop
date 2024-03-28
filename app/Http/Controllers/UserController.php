@@ -26,7 +26,7 @@ class UserController extends Controller
         $user = Userlogged::where('email', $email)->first();
     
       
-        if ($user && Hash::check($password, $user->password)) {
+        if ($user && Hash::check($password,$user->password)) {
 
             $request->session()->put('admin',1);
             
