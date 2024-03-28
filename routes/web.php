@@ -1,6 +1,6 @@
 <?php
 use Illuminate\Http\Request;
-
+use App\Http\Middleware\IsUser;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Customer\CustomerController;
 use App\Http\Controllers\Product\ProductController;
@@ -12,6 +12,9 @@ use App\Models\Product;
 use App\Models\Cart;
 use Illuminate\Support\Facades\DB; // Import DB facade
 use App\Models\Message; 
+
+
+
 
 
 //
@@ -118,48 +121,53 @@ Route::post('/usersignup',[UserController::class,'usersignup'])->name('usersignu
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Route::middleware('IsUser')->group( function(){
+
 //user pages
 Route::get('/home', function () {
     $products = Product::where('status', 0)->get(); 
 return view('user.userhome', ['products' => $products]);
 });
 
+    Route::get('/categories',function(){
 
-
-
-
-
-Route::get('/categories',function(){
-
-    return view('user.categories');
-})->name('categories');
-
-
-
-Route::get('/contactus',function(){
-    return view('user.contactus');
-})->name('contactus');
-
-
-
-
-
-
-Route::get('/products',function(){
+        return view('user.categories');
+    })->name('categories');
+    
+    
+    
+    Route::get('/contactus',function(){
+        return view('user.contactus');
+    })->name('contactus');
+    Route::get('/products',function(){
      
-    $products = Product::where('status', 0)->get();
-    return view('user.products',['products'=>$products]);
-})->name('products');
+        $products = Product::where('status', 0)->get();
+        return view('user.products',['products'=>$products]);
+    })->name('products');
+    
+    Route::post('/cart',[ActionController::class,'cart'])->name('cart');
+    
+    
+    Route::get('/cart',function(){
+        $cart = cart::all();
+        return view('user.cart',['cart' => $cart]);
+    });
+    Route::post('/contactus/submit', [ActionController::class,'submitForm'])->name('submitform');
+    Route::post('/delete',[ActionController::class,'deleteCart'])->name('deletecart');
+    Route::post('/update-quantity', [ActionController::class,'updateQuantity'])->name('update-quantity');
 
-Route::post('/cart',[ActionController::class,'cart'])->name('cart');
-
-
-Route::get('/cart',function(){
-    $cart = cart::all();
-    return view('user.cart',['cart' => $cart]);
 });
-
-
-Route::post('/contactus/submit', [ActionController::class,'submitForm'])->name('submitform');
-Route::post('/delete',[ActionController::class,'deleteCart'])->name('deletecart');
-Route::post('/update-quantity', [ActionController::class,'updateQuantity'])->name('update-quantity');

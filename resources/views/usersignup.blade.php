@@ -10,9 +10,9 @@
 <style>
   .card{
       margin-top: 100px;
-      background-color: rgb(242, 150, 71);
+      background-color: #007bff;
       color: rgb(255, 255, 255);
-      border: 2px solid rgb(243, 147, 74);
+      border: 2px solid rgb(0, 0, 0);
    
   }
   a{

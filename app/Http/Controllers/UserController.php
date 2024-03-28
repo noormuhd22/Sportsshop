@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Models\Userlogged;
 use Illuminate\Support\Facades\Hash; 
+use App\Http\Middleware\IsUser;
 class UserController extends Controller
 {
 
@@ -28,7 +29,7 @@ class UserController extends Controller
       
         if ($user && Hash::check($password,$user->password)) {
 
-            $request->session()->put('admin',1);
+              $request->session()->put('user',1);
             
             return redirect()->intended('/home');
         }
