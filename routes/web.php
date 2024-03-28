@@ -169,5 +169,6 @@ return view('user.userhome', ['products' => $products]);
     Route::post('/contactus/submit', [ActionController::class,'submitForm'])->name('submitform');
     Route::post('/delete',[ActionController::class,'deleteCart'])->name('deletecart');
     Route::post('/update-quantity', [ActionController::class,'updateQuantity'])->name('update-quantity');
+    Route::get('/checkout',[ActionController::class,'checkout'])->name('checkout');
 
 });

@@ -98,9 +98,16 @@ public function updateQuantity(Request $request)
     if ($cartItem) {
         $cartItem->quantity = $newQuantity;
         $cartItem->save();
-        return response()->json(['success' => true]);
+        return redirect('/cart');
     } else {
         return response()->json(['success' => false, 'message' => 'Product not found in the cart']);
     }
+}
+
+public function checkout(Request $request){
+  
+
+
+    return view('user.checkout');
 }
 }

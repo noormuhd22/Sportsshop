@@ -109,10 +109,10 @@ padding: 10px;
         <td></td>
     </tr>
 </table>
-<a href=""><button class="btn btn-primary mt-3">Proceed to Checkout</button></a>
+<a href="{{ route('checkout') }}"><button class="btn btn-primary mt-3">Proceed to Checkout</button></a>
 </div>
 
-
+ 
 
 
 
