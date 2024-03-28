@@ -142,33 +142,6 @@ Route::get('/contactus',function(){
 
 
 
-Route::post('/contactus/submit', function (Request $request) { 
-    
-    $request->validate([
-        'email' => 'required|email|max:255', 
-        'mobile' => 'required|numeric',
-        'message' => 'required'
-    ]);
-
-    DB::beginTransaction(); 
-    try {
-    
-        $message = new Message;
-        $message->email = $request->email;
-        $message->mobile = $request->mobile;
-        $message->message = $request->message;
-        $message->save();
-
-        DB::commit(); 
-
-    
-        return redirect('/contactus')->with('success', 'Message sent successfully');
-    } catch (\Exception $e) { 
-        DB::rollback(); 
-        return redirect()->back()->withErrors(['error' => 'An error occurred']);
-    }
-}) -> name('submitform');
-
 
 
 
@@ -186,4 +159,7 @@ Route::get('/cart',function(){
     return view('user.cart',['cart' => $cart]);
 });
 
+
+Route::post('/contactus/submit', [ActionController::class,'submitForm'])->name('submitform');
 Route::post('/delete',[ActionController::class,'deleteCart'])->name('deletecart');
+Route::post('/update-quantity', [ActionController::class,'updateQuantity'])->name('update-quantity');

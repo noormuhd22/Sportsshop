@@ -112,7 +112,7 @@
 <a href=""><button class="btn btn-primary mt-3">Proceed to Checkout</button></a>
 </div>
 
-@endsection
+
 
 
 
@@ -173,3 +173,30 @@
     }
 </script>
 
+    <script>
+    function updateQuantity(productId, newQuantity) {
+        var formData = new FormData();
+        formData.append('productId', productId);
+        formData.append('quantity', newQuantity);
+
+        fetch("{{ route('update-quantity') }}", {
+            method: 'POST',
+            body: formData,
+            headers: {
+                'X-CSRF-Token': '{{ csrf_token() }}'
+            }
+        })
+        .then(response => {
+            if (response.ok) {
+                // Update UI if necessary
+                updateTotalPrice(productId, newQuantity);
+                updatePageTotalPrice();
+            } else {
+                console.error('Failed to update quantity');
+            }
+        })
+        .catch(error => console.error('Error:', error));
+    }
+</script>
+
+@endsection

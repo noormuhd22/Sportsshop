@@ -19,45 +19,42 @@ ul.topnav {
   list-style-type: none;
   margin: 0;
   padding: 0;
-  height: 100px;
   overflow: hidden;
-  background-color:  #4b16ad;
+  height: 100px;
+  background-color: #007bff;
 }
 
 ul.topnav li {float: left;}
 
 ul.topnav li a {
-  margin-top: 20px;
+  margin-top: 10px;
   display: block;
-  color: white;
+  color: rgb(255, 255, 255);
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
 }
-#loggedInUser{
-    background-color:red;
-    padding:4px;
-    border-radius:2px;
-}
+
 .topnav img{
     border-radius:20px;
     height:50px;
     width:50px;
     
 }
-ul.topnav li a:hover{background-color: #111;}
+ul.topnav li a:hover:not(.active) {color: #000000;}
 
 
 .dropdown-content {
   display: none;
   position: fixed;
-  background-color:#4b16ad;
+  background-color:#007bff;
   min-width: 160px;
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
   z-index: 1;
 }
 
 .dropdown-content a {
+  
   color: black;
   padding: 12px 16px;
   text-decoration: none;
@@ -87,7 +84,7 @@ ul.topnav li.right {
 <body>
 
 <ul class="topnav">
-  <li><a href=""><img src="logo.jpg" alt="img" class="logo"></a></li>
+  <li><a href=""><img src="logo.jpg" alt="img"></a></li>
   <li><a href="/home">Home</a></li>
   <li><a href="{{ route('categories') }}">Categories</a></li>
   <li><a href="{{ route('products') }}">Products</a></li>

@@ -3,11 +3,14 @@
 @section('section')
 <style>
     .d-block{
-        margin-top: 100px;
+      
         margin-left: auto;
         margin-right: auto;
         height: 500px;
         width:88%;
+    }
+    .carousel-inner{
+      margin-top: 100px;
     }
 
 </style>
