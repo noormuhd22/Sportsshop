@@ -6,10 +6,15 @@ use App\Http\Controllers\Customer\CustomerController;
 use App\Http\Controllers\Product\ProductController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ActionController;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Product;
+use App\Models\Cart;
 use Illuminate\Support\Facades\DB; // Import DB facade
-use App\Models\Message; //
+use App\Models\Message; 
+
+
+//
 
 
 /*
@@ -78,6 +83,10 @@ Route::get('/message',function(){
     $message = message::all();
     return view('message',['message'=>$message]);
 });
+
+
+
+
 
 
 
@@ -169,4 +178,12 @@ Route::get('/products',function(){
     return view('user.products',['products'=>$products]);
 })->name('products');
 
-Route::get('/cart',[ActionController::class,'cart']);
+Route::post('/cart',[ActionController::class,'cart'])->name('cart');
+
+
+Route::get('/cart',function(){
+    $cart = cart::all();
+    return view('user.cart',['cart' => $cart]);
+});
+
+Route::post('/delete',[ActionController::class,'deleteCart'])->name('deletecart');

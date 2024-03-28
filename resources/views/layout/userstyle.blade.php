@@ -91,7 +91,7 @@ ul.topnav li.right {
   <li><a href="{{ route('products') }}">Products</a></li>
   <li><a href="{{ route('contactus') }}">Contact us</a></li>
   
-  <li class="right"><a href=""><span class="material-symbols-outlined">shopping_cart</span> </a></li>
+  <li class="right"><a href="{{ route('cart') }}"><span class="material-symbols-outlined">shopping_cart</span> </a></li>
   <li class="right dropdown" id="settingsDropdown"> <!-- Added id to the dropdown content -->
     <a href="#" class="material-symbols-outlined" id="settingsBtn">settings</a> <!-- Added id to the settings link -->
     <div class="dropdown-content">
