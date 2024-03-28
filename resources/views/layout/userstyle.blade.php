@@ -19,6 +19,7 @@ ul.topnav {
   list-style-type: none;
   margin: 0;
   padding: 0;
+  height: 100px;
   overflow: hidden;
   background-color:  #4b16ad;
 }
@@ -26,6 +27,7 @@ ul.topnav {
 ul.topnav li {float: left;}
 
 ul.topnav li a {
+  margin-top: 20px;
   display: block;
   color: white;
   text-align: center;
@@ -43,7 +45,7 @@ ul.topnav li a {
     width:50px;
     
 }
-ul.topnav li a:hover:not(.active) {background-color: #111;}
+ul.topnav li a:hover{background-color: #111;}
 
 
 .dropdown-content {
@@ -72,7 +74,7 @@ ul.topnav li a:hover:not(.active) {background-color: #111;}
 }
 
 ul.topnav li.right {
-  margin-left: 15px;
+  margin-left: 25px;
   float: right;
 }
 
@@ -85,7 +87,7 @@ ul.topnav li.right {
 <body>
 
 <ul class="topnav">
-  <li><a href=""><img src="logo.jpg" alt="img"></a></li>
+  <li><a href=""><img src="logo.jpg" alt="img" class="logo"></a></li>
   <li><a href="/home">Home</a></li>
   <li><a href="{{ route('categories') }}">Categories</a></li>
   <li><a href="{{ route('products') }}">Products</a></li>
