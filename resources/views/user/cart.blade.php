@@ -6,9 +6,7 @@
 
 
 <style>
-
-
-  .container {
+.container {
             width: 80%;
             margin: 0 auto;
             padding: 20px;
@@ -17,40 +15,40 @@
     height: 100px;
     width: 100px;
 }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-        }
+ table {
+    width: 100%;
+    border-collapse: collapse;
+}
 
-        th, td {
-            padding: 10px;
-            border-bottom: 1px solid #ddd;
-            text-align: left;
-        }
+ th, td {
+    padding: 10px;
+     border-bottom: 1px solid #ddd;
+     text-align: left;
+  }
 
-        th {
-            background-color: #ffffff;
-            color: grey
-        }
+  th {
+ background-color: #ffffff;
+ color: grey
+     }
 
-        tr:hover {
-            background-color: #f5f5f5;
-        }
+ tr:hover {
+ background-color: #f5f5f5;
+ }
       
-        @media screen and (max-width: 600px) {
-            table {
-                width: 100%;
-            }
+ @media screen and (max-width: 600px) {
+ table {
+ width: 100%;
+  }
 
-            th, td {
-                padding: 8px;
-            }
+ th, td {
+  padding: 8px;
+   }
 
-            .container {
-                width: 100%;
-                padding: 10px;
-            }
-        }
+.container {
+width: 100%;
+padding: 10px;
+ }
+}
 </style>
 
 
@@ -62,12 +60,12 @@
 <div class="container">
 <table>
     <tr>
-        <th>Product Name</th>
-        <th>Image</th>
-        <th>Price</th>
-        <th>Quantity</th>
-        <th>Total Price</th> 
-        <th>Action</th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th> 
     </tr>
     @php
         $totalPrice = 0; 
@@ -80,7 +78,6 @@
         <tr>
             <td>{{ $carts->name }}</td>
             <td><img src="{{ asset('uploads/' . $carts->image) }}" alt="{{ $carts->productname }}" class="product-image"></td>
-            <td>${{ $carts->price }}</td>
             <td>
                 <div class="input-group">
 <div class="input-group-prepend">
@@ -97,16 +94,19 @@
                 <form id="deleteForm_{{ $carts->id }}" action="{{ route('deletecart') }}" method="post">
                     @csrf
                     <input type="hidden" name="productId" value="{{ $carts->id }}">
-                    <button type="submit" class="btn btn-danger">Delete</button>
+                    <button type="submit" class="btn btn-danger"><span class="material-symbols-outlined">
+                        delete
+                        </span></button>
                 </form>
             </td>
+            <td>${{ $carts->price }}</td>
             
         </tr>
     @endforeach
     <tr>
-        <td colspan="4">Total</td>
+        <td colspan="5">Total</td>
         <td id="totalPrice" class="total-price">${{ $totalPrice }}</td>
-        <td></td> <!-- Empty cell for alignment -->
+        <td></td>
     </tr>
 </table>
 <a href=""><button class="btn btn-primary mt-3">Proceed to Checkout</button></a>
@@ -197,6 +197,8 @@
         })
         .catch(error => console.error('Error:', error));
     }
+
+    
 </script>
 
 @endsection
