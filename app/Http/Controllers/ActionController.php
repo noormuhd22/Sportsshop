@@ -45,7 +45,9 @@ public function submitForm(request $request){
 
     public function cart(Request $request) {
         
-        $existingCart = Cart::where('id', $request->productId)->first();
+        $existingCart = Cart::where('userid', $request->userid)
+        ->where('productid', $request->productId)
+        ->first();
     
         if ($existingCart) {
          
@@ -54,7 +56,7 @@ public function submitForm(request $request){
         } else {
           
             $cart = new Cart;
-            $cart->id = $request->productId;
+            $cart->productid = $request->productId;
             $cart->name = $request->name;
             $cart->price = $request->price;
             $cart->image = $request->image;

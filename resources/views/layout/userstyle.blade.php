@@ -96,7 +96,7 @@ ul.topnav li.right {
     <div class="dropdown-content">
       <a href="">Profile</a>
       <a href="">Orders</a>
-      <a href="">Logout</a>
+      <a href="{{ route('userlogout')}}">Logout</a>
     </div>
   </li>
 </ul>

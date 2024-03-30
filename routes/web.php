@@ -138,27 +138,44 @@ Route::get('/categories', function () {
     
     
     
-    Route::get('/contactus',function(){
+     Route::get('/contactus',function(){
         return view('user.contactus');
     })->name('contactus');
 
-    Route::get('/products',function(request $request){
+     Route::get('/products',function(request $request){
       $products = Product::where('status', 0)->get();
       $user = $request->session()->get('user');
         return view('user.products',['products'=>$products,'user' => $user]);
-    })->name('products');
+     })->name('products');
 
     
+    
+    
+    
+  
+Route::get('/cart', function (Request $request) {
+   
+   
+    $userId = session('user');
+
+    // Fetch only the cart items associated with the logged-in user
+    $cart = Cart::where('userid', $userId)->get();
+
+    return view('user.cart', ['cart' => $cart]);
+});
+
+
+
+Route::get('/logoutuser', function (Request $request) {
+    $request->session()->forget('user');
+    return view('userlogin');
+})->name('userlogout');
+
+
     Route::post('/cart',[ActionController::class,'cart'])->name('cart');
-    
-    
-    Route::get('/cart',function(request $request){
-        $cart = cart::all();
-        return view('user.cart',['cart' => $cart]);
-    });
     Route::post('/contactus/submit', [ActionController::class,'submitForm'])->name('submitform');
-    Route::post('/delete',[ActionController::class,'deleteCart'])->name('deletecart');
+    Route::post('cart/delete',[ActionController::class,'deleteCart'])->name('deletecart');
     Route::post('/update-quantity', [ActionController::class,'updateQuantity'])->name('update-quantity');
-    Route::get('/checkout',[ActionController::class,'checkout'])->name('checkout');
+    Route::get('cart/checkout',[ActionController::class,'checkout'])->name('checkout');
 
 });
