@@ -6,12 +6,15 @@
       
         margin-left: auto;
         margin-right: auto;
-        height: 500px;
+        height: 600px;
         width:88%;
     }
     .carousel-inner{
       margin-top: 100px;
     }
+   img{
+    border-radius: 12px;
+   }
 
 </style>
 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">

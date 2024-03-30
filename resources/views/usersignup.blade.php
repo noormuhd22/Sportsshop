@@ -10,13 +10,13 @@
 <style>
   .card{
       margin-top: 100px;
-      background-color: #007bff;
+      background-color: #f56a63;
       color: rgb(255, 255, 255);
       border: 2px solid rgb(0, 0, 0);
    
   }
   a{
-      color: rgb(49, 158, 240);
+      color: rgb(15, 143, 242);
   }
   .card-header{
   

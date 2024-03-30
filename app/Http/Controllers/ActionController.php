@@ -1,7 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\DB;
+use App\Models\Message; 
 use Illuminate\Http\Request;
 use App\Models\cart;
 class ActionController extends Controller
