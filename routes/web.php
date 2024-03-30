@@ -7,6 +7,7 @@ use App\Http\Controllers\Product\ProductController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ActionController;
+use App\Http\Controllers\CategoryController;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Product;
 use App\Models\Cart;
@@ -41,7 +42,7 @@ Route::get('/welcome', function () {
 
 
 
-
+//middle ware 
 Route::middleware(['IsAdmin'])->group(function () {
     Route::prefix('customers')->group(function () {
         Route::get('/', [CustomerController::class, 'index'])->name('customer.index');
@@ -61,27 +62,30 @@ Route::post('/product/{id}/update',[ProductController::class,'update'])->name('p
 Route::get('/setting',function(){
     return view('setting');
 });
+
+Route::prefix('category')->group(function(){
+  Route::get('/',[CategoryController::class,'index'])->name('category.index');
+  Route::get('/form',[CategoryController::class,'create'])->name('category.create');
+  Route::post('/form/submit',[CategoryController::class,'store'])->name('category.store');
+  Route::get('/{id}',[CategoryController::class,'edit'])->name('category.edit');
+  Route::post('/{id}/update',[CategoryController::class,'update'])->name('category.update');
+  Route::get('/{id}/delete',[CategoryController::class,'delete'])->name('category.delete');
 });
+});
+
 
 
 Route::get('/logout', function (Request $request) {
     $request->session()->forget('admin');
     return view('login');
 })->name('logout');
-
-
-
 Route::get('/showsignup',[AuthController::class,'showsignup'])->name('signuppage');
 Route::post('/signup',[AuthController::class,'signup'])->name('signup');
 Route::get('/loginpage',[AuthController::class,'loginpage'])->name('loginpage');
 Route::post('/login',[AuthController::class,'login'])->name('login');
-
 Route::get('/test', function(Request $request){
-
     dd($request->session()->all());
 });
-
-
 Route::get('/message',function(){
     $message = message::all();
     return view('message',['message'=>$message]);
@@ -115,26 +119,7 @@ Route::post('/usersignup',[UserController::class,'usersignup'])->name('usersignu
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+//middleware for user
 Route::middleware('IsUser')->group( function(){
 
 //user pages

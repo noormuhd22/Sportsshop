@@ -62,6 +62,9 @@
                 <a class="nav-link" href="/product">Product</a>
               </li>
               <li class="nav-item">
+                <a class="nav-link" href="/category">Category</a>
+              </li>
+              <li class="nav-item">
                 <a class="nav-link " href="/setting">Setting</a>
               </li>
               <li class="nav-item">
