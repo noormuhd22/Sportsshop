@@ -142,15 +142,17 @@ Route::get('/categories', function () {
         return view('user.contactus');
     })->name('contactus');
 
-    Route::get('/products',function(){
+    Route::get('/products',function(request $request){
       $products = Product::where('status', 0)->get();
-        return view('user.products',['products'=>$products]);
+      $user = $request->session()->get('user');
+        return view('user.products',['products'=>$products,'user' => $user]);
     })->name('products');
+
     
     Route::post('/cart',[ActionController::class,'cart'])->name('cart');
     
     
-    Route::get('/cart',function(){
+    Route::get('/cart',function(request $request){
         $cart = cart::all();
         return view('user.cart',['cart' => $cart]);
     });

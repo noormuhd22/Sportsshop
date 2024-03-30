@@ -58,6 +58,7 @@ public function submitForm(request $request){
             $cart->name = $request->name;
             $cart->price = $request->price;
             $cart->image = $request->image;
+            $cart->userid = $request->userid;
             $cart->quantity = 1; 
             $cart->save();
         }

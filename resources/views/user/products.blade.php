@@ -65,29 +65,16 @@ section{
                 <input type="hidden" name="name" value="{{ $product->name }}">
                 <input type="hidden" name="price" value="{{ $product->price }}">
                 <input type="hidden" name="image" value="{{ $product->image }}">
+                @if ($user)
+                <input type="hidden" name="userid" value="{{ $user }}">
+                @endif
                 <button type="submit" class="btn btn-primary">Add to Cart</button>
                 </form>   
                      </div>
                 </div>
-
-
-
                 </div>
                 
          
 </section>
-         
-    
-            
-    
-    
-    
-
-
-    @endforeach
-
-
-
-
-
+@endforeach
 @endsection

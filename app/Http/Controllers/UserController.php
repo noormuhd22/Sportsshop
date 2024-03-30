@@ -29,7 +29,7 @@ class UserController extends Controller
       
         if ($user && Hash::check($password,$user->password)) {
 
-              $request->session()->put('user',1);
+              $request->session()->put('user',$user->id);
             
             return redirect()->intended('/home');
         }
