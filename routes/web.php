@@ -10,6 +10,7 @@ use App\Http\Controllers\ActionController;
 use App\Http\Controllers\CategoryController;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Product;
+use App\Models\categories;
 use App\Models\Cart;
 use Illuminate\Support\Facades\DB; // Import DB facade
 use App\Models\Message; 
@@ -59,9 +60,7 @@ Route::post('/product/create', [ProductController::class, 'store'])->name('produ
 Route::get('/produt/{id}',[ProductController::class,'edit'])->name('product.edit');
 Route::get('/product/{id}/delete',[ProductController::class,'delete'])->name('product.delete');
 Route::post('/product/{id}/update',[ProductController::class,'update'])->name('product.update');
-Route::get('/setting',function(){
-    return view('setting');
-});
+
 
 Route::prefix('category')->group(function(){
   Route::get('/',[CategoryController::class,'index'])->name('category.index');
@@ -128,19 +127,23 @@ Route::get('/home', function () {
 return view('user.userhome', ['products' => $products]);
 });
 
-    Route::get('/categories',function(){
+Route::get('/categories', function () {
+    // Retrieve all categories from the database
+    $categories = categories::all();
+    
+    // Return the view 'user.categories' and pass the categories data to it
+    return view('user.categories', ['categories' => $categories]);
+})->name('categories');
 
-        return view('user.categories');
-    })->name('categories');
     
     
     
     Route::get('/contactus',function(){
         return view('user.contactus');
     })->name('contactus');
+
     Route::get('/products',function(){
-     
-        $products = Product::where('status', 0)->get();
+      $products = Product::where('status', 0)->get();
         return view('user.products',['products'=>$products]);
     })->name('products');
     

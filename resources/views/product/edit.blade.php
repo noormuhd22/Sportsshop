@@ -21,6 +21,21 @@
         @enderror
     </div>
     </div>
+    
+    <div class="mb-3">
+        <label for="category" class="form-label">Category</label>
+        <select class="form-select" id="category" name="categoryname" required>
+            <option value="">Select Category</option>
+            @foreach($categories as $category)
+                <option value="{{ $category->name }}" >{{ $category->name }}</option>
+            @endforeach
+        </select>
+        <div class="text-danger">
+            @error('categoryname')
+                {{ $message }}
+            @enderror
+        </div>
+    </div>
 
     <div class="mb-3">
         <img src="{{ asset('uploads/' . $product->image) }}" alt="img" height="70px" width="70px">

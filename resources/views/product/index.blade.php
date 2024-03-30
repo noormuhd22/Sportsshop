@@ -14,7 +14,7 @@
             <th scope="col">Image</th>
             <th scope="col">Name</th>
             <th scope="col">Price</th>
-            
+            <th scope="col">Category</th>
             <th scope="col">Edit</th>
             <th scope="col">Delete</th>
         </tr>
@@ -25,6 +25,7 @@
           <td> <img src="{{ asset('uploads/' . $products->image) }}" alt="Product Image" height="100px" width="100px"></td>
             <td>{{ $products->name }}</td>
             <td>{{ $products->price }}</td>
+            <td>{{ $products->categoryname }}</td>
             <td>
                 <a href="{{Route('product.edit',['id'=>$products->id]) }}">
                     <button class='btn btn-primary'>Edit</button>

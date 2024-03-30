@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Product;
 
 use App\Http\Controllers\Controller;
 use App\Models\product;
+use App\Models\categories;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -21,7 +22,9 @@ class ProductController extends Controller
 
 
   public function form(){
-    return view("product.create");
+
+    $categories = categories::all();
+    return view("product.create",['categories' => $categories]);
   }
 
   
@@ -34,8 +37,10 @@ class ProductController extends Controller
     $request->validate([
         'name' => 'required|alpha_num',
         'price' => 'required|numeric',
+        'categoryname' => 'required|alpha_num',
         'photo' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048', // Adjust the file size limit and accepted file types as needed
-    ]);
+        
+      ]);
 
     // Initialize $imageName with a default value
     $imageName = null;
@@ -48,6 +53,7 @@ class ProductController extends Controller
         $product = new Product;
         $product->name = $request->name;
         $product->price = $request->price;
+        $product->categoryname = $request->categoryname;
 
         // Handle file upload
         if ($request->hasFile('photo')) {
@@ -85,7 +91,8 @@ class ProductController extends Controller
     // abort(404);
     try{
       $product = product::findorfail($id);
-      return view('product.edit',compact('product'));
+      $categories = categories::all();
+      return view('product.edit',compact('product','categories'));
     }
     catch(\Exception $e){
       // dd($e->getMessage());

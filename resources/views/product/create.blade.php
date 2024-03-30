@@ -26,6 +26,21 @@
     </div>
 
     <div class="mb-3">
+        <label for="category" class="form-label">Category</label>
+        <select class="form-select" id="category" name="categoryname" required>
+            <option value="">Select Category</option>
+            @foreach($categories as $category)
+                <option value="{{ $category->name }}" >{{ $category->name }}</option>
+            @endforeach
+        </select>
+        <div class="text-danger">
+            @error('categoryname')
+                {{ $message }}
+            @enderror
+        </div>
+    </div>
+
+    <div class="mb-3">
         <label for="photo" class="form-label">Photo</label>
         <input type="file" class="form-control" id="photo" name="photo" accept="image/*" required>
        <div class="text-danger">@error('photo')
