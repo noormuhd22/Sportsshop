@@ -83,7 +83,7 @@ ul.topnav li.right {
 <body>
 
 <ul class="topnav">
-  <li><a href=""><img src="logo.jpg" alt="img"></a></li>
+  <li><a href="#"><img src="{{ asset('logo.jpg') }}" alt="img">  </a></li>
   <li><a href="/home">Home</a></li>
   <li><a href="{{ route('categories') }}">Categories</a></li>
   <li><a href="{{ route('products') }}">Products</a></li>

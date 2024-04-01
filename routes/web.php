@@ -176,6 +176,7 @@ Route::get('/logoutuser', function (Request $request) {
     Route::post('/contactus/submit', [ActionController::class,'submitForm'])->name('submitform');
     Route::post('cart/delete',[ActionController::class,'deleteCart'])->name('deletecart');
     Route::post('/update-quantity', [ActionController::class,'updateQuantity'])->name('update-quantity');
-    Route::get('cart/checkout',[ActionController::class,'checkout'])->name('checkout');
+    Route::post('cart/checkout', [ActionController::class, 'checkout'])->name('checkout');
+
 
 });
