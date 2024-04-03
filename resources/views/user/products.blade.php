@@ -62,9 +62,7 @@ section{
                 <form action="{{ route('cart') }}" method="post">
                     @csrf
                 <input type="hidden" name="productId" value="{{ $product->id }}">
-                <input type="hidden" name="name" value="{{ $product->name }}">
-                <input type="hidden" name="price" value="{{ $product->price }}">
-                <input type="hidden" name="image" value="{{ $product->image }}">
+                
                 @if ($user)
                 <input type="hidden" name="userid" value="{{ $user }}">
                 @endif

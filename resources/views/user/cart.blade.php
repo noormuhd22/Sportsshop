@@ -60,10 +60,10 @@ padding: 10px;
 <div class="container">
 <table>
     <tr>
+        <th>Discription</th>
         <th></th>
-        <th></th>
-        <th></th>
-        <th></th>
+        <th>Qty</th>
+        <th>Unit price</th>
         <th></th>
         <th></th> 
     </tr>
@@ -89,7 +89,7 @@ padding: 10px;
 </div>
 </div>
                 </td>
-            <td class="subtotal" id="subtotal_{{ $carts->id }}">${{ $subtotal }}</td>
+                <td>${{ $carts->price }}</td>
             <td>
                 <form id="deleteForm_{{ $carts->id }}" action="{{ route('deletecart') }}" method="post">
                     @csrf
@@ -99,7 +99,8 @@ padding: 10px;
                         </span></button>
                 </form>
             </td>
-            <td>${{ $carts->price }}</td>
+            <td class="subtotal" id="subtotal_{{ $carts->id }}">${{ $subtotal }}</td>
+
             
         </tr>
     @endforeach

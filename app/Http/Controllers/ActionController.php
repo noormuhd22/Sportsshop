@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\DB;
 use App\Models\Message; 
 use Illuminate\Http\Request;
 use App\Models\cart;
+use App\Models\product;
 class ActionController extends Controller
 {
 
@@ -42,31 +43,36 @@ public function submitForm(request $request){
 
 
 
-
-    public function cart(Request $request) {
-        
-        $existingCart = Cart::where('userid', $request->userid)
+public function cart(Request $request) {
+    
+    
+    $existingCart = Cart::where('userid', $request->userid)
         ->where('productid', $request->productId)
         ->first();
+
     
-        if ($existingCart) {
-         
-            $existingCart->quantity += 1; 
-            $existingCart->save();
-        } else {
-          
-            $cart = new Cart;
-            $cart->productid = $request->productId;
-            $cart->name = $request->name;
-            $cart->price = $request->price;
-            $cart->image = $request->image;
-            $cart->userid = $request->userid;
-            $cart->quantity = 1; 
-            $cart->save();
-        }
-    
-        return redirect('/products')->with('success', 'Product added successfully');
+    if ($existingCart) {
+        $existingCart->quantity += 1; 
+        $existingCart->save();
+    } else {
+      
+        $productid = $request->productId;
+        $product = Product::where('id', $productid)->first();
+
+        $cart = new Cart;
+        $cart->productid = $productid;
+        $cart->userid = $request->userid;
+        $cart->name = $product->name;
+        $cart->price = $product->price;
+        $cart->image = $product->image;
+
+        $cart->save();
     }
+
+    
+    return redirect('/products')->with('success', 'Product added successfully');
+}
+
     
 
 

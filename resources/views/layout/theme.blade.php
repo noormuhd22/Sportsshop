@@ -64,7 +64,9 @@
               <li class="nav-item">
                 <a class="nav-link" href="/category">Category</a>
               </li>
-             
+              <li class="nav-item">
+                <a class="nav-link" href="/orders">Orders</a>
+              </li>
               <li class="nav-item">
                 <a class="nav-link " href="/message">message</a>
               </li>

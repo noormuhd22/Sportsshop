@@ -9,6 +9,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\ActionController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\OrderController;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Product;
 use App\Models\categories;
@@ -71,6 +72,10 @@ Route::post('/product/{id}/update',[ProductController::class,'update'])->name('p
   Route::post('/{id}/update',[CategoryController::class,'update'])->name('category.update');
   Route::get('/{id}/delete',[CategoryController::class,'delete'])->name('category.delete');
 });
+
+
+Route::get('/orders',[OrderController::class,'index'])->name('order.index');
+
 });
 
 
