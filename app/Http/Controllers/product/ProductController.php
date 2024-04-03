@@ -128,6 +128,7 @@ class ProductController extends Controller
     $product = Product::findorfail($id);
     $product->name = $request->name;
     $product->price = $request->price;
+    $product->categoryname = $request->categoryname;
     // $product->image = $imageName==null?$product->image : $imageName;
     if($imageName){
       $product->image = $imageName;

@@ -109,9 +109,14 @@ public function updateQuantity(Request $request)
 }
 
 public function checkout(Request $request){
-  
+    
+    $user = session('user');
+
+    // Fetch only the cart items associated with the logged-in user
+    $cart = Cart::where('userid', $user)->get();
 
 
-    return view('user.checkout');
+
+    return view('user.checkout',['cart' => $cart,'user' => $user]);
 }
 }

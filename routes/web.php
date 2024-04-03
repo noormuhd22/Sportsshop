@@ -8,6 +8,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ActionController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\PaymentController;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Product;
 use App\Models\categories;
@@ -45,7 +46,7 @@ Route::get('/welcome', function () {
 
 //middle ware 
 Route::middleware(['IsAdmin'])->group(function () {
-    Route::prefix('customers')->group(function () {
+         Route::prefix('customers')->group(function () {
         Route::get('/', [CustomerController::class, 'index'])->name('customer.index');
         Route::get('/form', [CustomerController::class, 'form'])->name('customer.create');
         Route::post('/create', [CustomerController::class, 'store'])->name('customer.store');
@@ -54,7 +55,7 @@ Route::middleware(['IsAdmin'])->group(function () {
         Route::get('/{id}/delete',[CustomerController::class,'delete']);
     });
 
-    Route::get('/product', [ProductController::class, 'index'])->name('products.index');
+Route::get('/product', [ProductController::class, 'index'])->name('products.index');
 Route::get('/product/form', [ProductController::class, 'form'])->name('product.create');
 Route::post('/product/create', [ProductController::class, 'store'])->name('products.store');
 Route::get('/produt/{id}',[ProductController::class,'edit'])->name('product.edit');
@@ -62,7 +63,7 @@ Route::get('/product/{id}/delete',[ProductController::class,'delete'])->name('pr
 Route::post('/product/{id}/update',[ProductController::class,'update'])->name('product.update');
 
 
-Route::prefix('category')->group(function(){
+ Route::prefix('category')->group(function(){
   Route::get('/',[CategoryController::class,'index'])->name('category.index');
   Route::get('/form',[CategoryController::class,'create'])->name('category.create');
   Route::post('/form/submit',[CategoryController::class,'store'])->name('category.store');
@@ -75,8 +76,8 @@ Route::prefix('category')->group(function(){
 
 
 Route::get('/logout', function (Request $request) {
-    $request->session()->forget('admin');
-    return view('login');
+$request->session()->forget('admin');
+return view('login');
 })->name('logout');
 Route::get('/showsignup',[AuthController::class,'showsignup'])->name('signuppage');
 Route::post('/signup',[AuthController::class,'signup'])->name('signup');
@@ -156,12 +157,12 @@ Route::get('/categories', function () {
 Route::get('/cart', function (Request $request) {
    
    
-    $userId = session('user');
+    $user = session('user');
 
     // Fetch only the cart items associated with the logged-in user
-    $cart = Cart::where('userid', $userId)->get();
+    $cart = Cart::where('userid', $user)->get();
 
-    return view('user.cart', ['cart' => $cart]);
+    return view('user.cart', ['cart' => $cart,'user' => $user]);
 });
 
 
@@ -171,12 +172,14 @@ Route::get('/logoutuser', function (Request $request) {
     return view('userlogin');
 })->name('userlogout');
 
-
+//action controller for cart and payment
     Route::post('/cart',[ActionController::class,'cart'])->name('cart');
     Route::post('/contactus/submit', [ActionController::class,'submitForm'])->name('submitform');
     Route::post('cart/delete',[ActionController::class,'deleteCart'])->name('deletecart');
     Route::post('/update-quantity', [ActionController::class,'updateQuantity'])->name('update-quantity');
-    Route::post('cart/checkout', [ActionController::class, 'checkout'])->name('checkout');
-
+    Route::get('cart/checkout', [ActionController::class, 'checkout'])->name('checkout');
+    Route::post('/payment-process',[PaymentController::class,'paymentProcess'])->name('payment.process');
+    Route::get('/payment-process',[PaymentController::class,'paymentProcess'])->name('payment.process');
+    Route::get('/payment-success',[PaymentController::class,'paymentSuccess'])->name('payment.success');
 
 });

@@ -7,24 +7,17 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>login</title>
-  <!-- Bootstrap CSS -->
   <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <style>
-  .card{
-      margin-top: 100px;
-      background-color: #f56a63;
-      color: rgb(255, 255, 255);
-      border: 2px solid rgb(0, 0, 0);
-   
-  }
-  a{
-      color: rgb(15, 143, 242);
-  }
-  .card-header{
-  
-    text-align: center;
-     }
+  .container{
+        width: 500px;
+        margin-top: 200px;
+        background-color:#4b16ad;
+        color:white;
+    padding: 20px;
+    border-radius: 5px;
+    }
      
 </style>
 <body>
@@ -34,16 +27,11 @@
     {{ session('success') }}
 </div>
 @endif
-  <div class="container mt-5">
-    <div class="row justify-content-center">
-      <div class="col-md-6">
+  <div class="container ">
     
-        <div class="card">
-        
-          <div class="card-header">
-          Login Page
-          </div>
-          <div class="card-body">
+          <h4>Login Page</h4>
+          
+          
             <form action="{{ route('userlogin') }}" method="POST">
                 @csrf
              
@@ -75,15 +63,12 @@
             </div>
           </div>
         </div>
-      </div>
-    </div>
-  </div>
+      
 
-  <!-- Bootstrap JS (optional) -->
-  <!-- Include jQuery -->
+
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-<!-- Include Bootstrap JavaScript -->
+
 
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
