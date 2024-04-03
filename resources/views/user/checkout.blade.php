@@ -167,8 +167,8 @@
                             url: "{{ route('payment.process') }}",
                             type: "POST",
                             headers: {
-                             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                                },
+                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                            },
                             data: {
                                 payment_id: paymentid,
                                 totalprice: amount / 100,
@@ -178,8 +178,15 @@
                                 city: city,
                                 pincode: pincode,
                                 mobile: mobile,
-                            
                             },
+                            success: function (data) {
+                                // Redirect to paymentsuccess blade file upon successful payment processing
+                                window.location.href = "{{ route('payment.success') }}";
+                            },
+                            error: function (xhr, status, error) {
+                                // Handle error if necessary
+                                console.error(xhr.responseText);
+                            }
                         });
                     },
                     "theme": {
@@ -197,5 +204,6 @@
         });
     });
 </script>
+
 
 @endsection
