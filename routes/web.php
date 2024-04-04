@@ -131,7 +131,7 @@ Route::middleware('IsUser')->group( function(){
 Route::get('/home', function () {
     $products = Product::where('status', 0)->get(); 
 return view('user.userhome', ['products' => $products]);
-});
+})->name('home');
 
 Route::get('/categories', function () {
     // Retrieve all categories from the database
@@ -160,13 +160,9 @@ Route::get('/categories', function () {
     
   
 Route::get('/cart', function (Request $request) {
-   
-   
     $user = session('user');
-
     // Fetch only the cart items associated with the logged-in user
     $cart = Cart::where('userid', $user)->get();
-
     return view('user.cart', ['cart' => $cart,'user' => $user]);
 });
 
@@ -184,7 +180,6 @@ Route::get('/logoutuser', function (Request $request) {
     Route::post('/update-quantity', [ActionController::class,'updateQuantity'])->name('update-quantity');
     Route::get('cart/checkout', [ActionController::class, 'checkout'])->name('checkout');
     Route::post('/payment-process',[PaymentController::class,'paymentProcess'])->name('payment.process');
-    Route::get('/payment-process',[PaymentController::class,'paymentProcess'])->name('payment.process');
     Route::get('/payment-success',[PaymentController::class,'paymentSuccess'])->name('payment.success');
 
 });

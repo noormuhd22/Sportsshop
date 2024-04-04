@@ -1,81 +1,132 @@
+
+
+
 @extends('layout.userstyle')
 @section('section')
 
-<style>
-     img {
-    
- border-radius: 12px;
-   height:300px;
-}
-section{
-    margin-top:50px;
-    display: inline-block;
-    
-  
+    <title>Product Page</title>
+    <style>
+        /* Style for the card */
+        .product-card {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            width: 250px; /* Adjust width as needed */
+            margin: 20px;
+            display: inline-block;
+            transition: transform 0.3s ease;
+        }
 
-}
-.card{
-    width: 400px;
-    height: 500px;
-    margin-left: 10px;
-    
-}
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
 
+        .product-image {
+            width: 100%;
+            height: 150px; /* Adjust height as needed */
+            object-fit: cover;
+        }
 
+        .product-details {
+            padding: 15px;
+        }
 
-</style>
+        .product-title {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
 
-@if (session('success'))
-    <div class="alert alert-success">
+        .product-description {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 10px;
+        }
+
+        .product-price {
+            font-size: 20px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .buy-button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: #fff;
+            text-align: center;
+            text-decoration: none;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .cart-button{
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #28a745;
+            color: #fff;
+            text-align: center;
+            text-decoration: none;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+      .cart-button:hover{
+        background-color: #2ebf4f;
+      }
+        .buy-button:hover {
+            background-color: #0056b3;
+        }
+        .success-message{
+            color: green;
+        }
+    </style>
+</head>
+<body>
+    @if(session('success'))
+    <div class="success-message">
         {{ session('success') }}
     </div>
 @endif
-
-@foreach ($products as $product )
-
-
-
-
-<section>
-  
-
-    
-        <div class="card">
-
-
-
-
-    <img src="{{ asset('uploads/' . $product->image) }}" alt="image">
-    <div class="card-body">
-        <h2>{{ $product->name }}</h2>
-        <p class="card-text"><span class="material-symbols-outlined" id="size">
-            currency_rupee
-            </span>{{ $product->price }}</p>
-             <div class="btn-group">
-                 <form action="" method="post">
-              <input type="hidden" name="productId" value="{{ $product->id }}">
-                <input type="hidden" name="name" value="{{ $product->name }}">
-                <input type="hidden" name="price" value="{{ $product->price }}">
-                <input type="hidden" name="image" value="{{ $product->image }}">
-                <button type="submit" class="btn btn-success">BuyNow</button>'
-                </form>
-                <form action="{{ route('cart') }}" method="post">
+    @foreach ($products as $product )
+        
+   
+    <div class="product-card">
+        <img src="{{ asset('uploads/' . $product->image) }}" alt="image" class="product-image">
+        <div class="product-details">
+            <h2 class="product-title">{{ $product->name }}</h2>
+            <p class="product-description">Product description goes here. Keep it concise and informative.</p>
+            <span class="material-symbols-outlined" id="size">
+                currency_rupee
+                </span><p class="product-price">{{ $product->price }}</p>
+                <form action="" method="post">
+                    <input type="hidden" name="productId" value="{{ $product->id }}">
+                      <input type="hidden" name="name" value="{{ $product->name }}">
+                      <input type="hidden" name="price" value="{{ $product->price }}">
+                      <input type="hidden" name="image" value="{{ $product->image }}">
+                      <button type="submit" class="buy-button">BuyNow</button>
+                      </form>
+                    <form action="{{ route('cart') }}" method="post">
                     @csrf
-                <input type="hidden" name="productId" value="{{ $product->id }}">
+                    <input type="hidden" name="productId" value="{{ $product->id }}">
+                    @if ($user)
+                    <input type="hidden" name="userid" value="{{ $user }}">
+                    @endif
+                    <button type="submit" class="cart-button">Add to Cart</button>
+                    </form>   
+        </div>
+    </div>
+    @endforeach
+    @endsection
+</body>
+</html>
+
+
+              
                 
-                @if ($user)
-                <input type="hidden" name="userid" value="{{ $user }}">
-                @endif
-                <button type="submit" class="btn btn-primary">Add to Cart</button>
-                </form>   
-                     </div>
-                </div>
-
-
-
-                </div>
-                
-         
-</section>
-@endforeach
-@endsection
+             
+  
