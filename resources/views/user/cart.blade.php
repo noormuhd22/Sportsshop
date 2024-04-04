@@ -58,6 +58,7 @@ padding: 10px;
     </div>
 @endif
 <div class="container">
+    @if(count($cart) > 0)
 <table>
     <tr>
         <th>Discription</th>
@@ -111,6 +112,9 @@ padding: 10px;
     </tr>
 </table>
 <a href="{{ route('checkout') }}"><button class="btn btn-primary mt-3">Proceed to Checkout</button></a>
+@else
+<p>Your cart is empty.</p>
+@endif
 </div>
 
  
