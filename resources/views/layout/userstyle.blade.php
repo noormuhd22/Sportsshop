@@ -15,7 +15,16 @@ body {
   font-family: 'Poppins', sans-serif;
 
 }
+#cartCount{
+  background-color: red;
+  border-radius: 50%;
+  height: 15px;
+  width: 15px;
+  padding: 4px;
+  font-size: 13px;
 
+
+}
 ul.topnav {
   list-style-type: none;
   margin: 0;

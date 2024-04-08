@@ -176,11 +176,19 @@ Route::post('/usersignup',[UserController::class,'usersignup'])->name('usersignu
     Route::post('cart/delete',[ActionController::class,'deleteCart'])->name('deletecart');
     Route::post('/update-quantity', [ActionController::class,'updateQuantity'])->name('update-quantity');
     Route::get('cart/checkout', [ActionController::class, 'checkout'])->name('checkout');
+    Route::post('/buynow/checkout',[ActionController::class,'buynowCheckout'])->name('buynow.checkout');
+ 
+
+
+
+    //buynow payment process
+    Route::post('/buynow-payment-process',[PaymentController::class,'buynowpaymentProcess'])->name('buynowpayment.process');
+
     Route::post('/payment-process',[PaymentController::class,'paymentProcess'])->name('payment.process');
     Route::get('/payment-success',[PaymentController::class,'paymentSuccess'])->name('payment.success');
 
 //user ordr and vieww page
-    Route::get('/order',[OrderstatusController::class,'index'])->name('user.orders');
+     Route::get('/order',[OrderstatusController::class,'index'])->name('user.orders');
     Route::get('/orderview/{id}',[OrderstatusController::class,'show'])->name('user.view');
 
 

@@ -100,11 +100,14 @@
             <h2 class="product-title">{{ $product->name }}</h2>
             <p class="product-description">Product description goes here. Keep it concise and informative.</p>
             <span class="material-symbols-outlined" id="size">currency_rupee</span><p class="product-price">{{ $product->price }}</p>
-            <form action="" method="post">
+           
+            <form action="{{ route('buynow.checkout') }}" method="post">
+                @csrf
                 <input type="hidden" name="productId" value="{{ $product->id }}">
-                <input type="hidden" name="name" value="{{ $product->name }}">
-                <input type="hidden" name="price" value="{{ $product->price }}">
-                <input type="hidden" name="image" value="{{ $product->image }}">
+                @if ($user)
+                <input type="hidden" name="userid" value="{{ $user }}">
+                @endif
+           
                 <button type="submit" class="buy-button">Buy Now</button>
             </form>
             <form action="{{ route('cart') }}" method="post">

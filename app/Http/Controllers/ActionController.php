@@ -125,4 +125,17 @@ public function checkout(Request $request){
 
     return view('user.checkout',['cart' => $cart,'user' => $user]);
 }
+
+
+public function buynowCheckout(Request $request){
+
+$user = session('user');
+$productid = $request->input('productId');
+
+$product = product::where('id',$productid)->get();
+
+return view('user.buynow',['product'=>$product,'user'=>$user]);
+
+}
+
 }
