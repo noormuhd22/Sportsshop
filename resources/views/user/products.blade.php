@@ -1,6 +1,3 @@
-
-
-
 @extends('layout.userstyle')
 @section('section')
 
@@ -75,9 +72,13 @@
             cursor: pointer;
             transition: background-color 0.3s ease;
         }
-      .cart-button:hover{
-        background-color: #2ebf4f;
-      }
+        .cart-button[disabled] {
+            background-color: #6c757d;
+            cursor: not-allowed;
+        }
+        .cart-button:hover{
+            background-color: #2ebf4f;
+        }
         .buy-button:hover {
             background-color: #0056b3;
         }
@@ -91,42 +92,33 @@
     <div class="success-message">
         {{ session('success') }}
     </div>
-@endif
+    @endif
     @foreach ($products as $product )
-        
-   
     <div class="product-card">
         <img src="{{ asset('uploads/' . $product->image) }}" alt="image" class="product-image">
         <div class="product-details">
             <h2 class="product-title">{{ $product->name }}</h2>
             <p class="product-description">Product description goes here. Keep it concise and informative.</p>
-            <span class="material-symbols-outlined" id="size">
-                currency_rupee
-                </span><p class="product-price">{{ $product->price }}</p>
-                <form action="" method="post">
-                    <input type="hidden" name="productId" value="{{ $product->id }}">
-                      <input type="hidden" name="name" value="{{ $product->name }}">
-                      <input type="hidden" name="price" value="{{ $product->price }}">
-                      <input type="hidden" name="image" value="{{ $product->image }}">
-                      <button type="submit" class="buy-button">BuyNow</button>
-                      </form>
-                    <form action="{{ route('cart') }}" method="post">
-                    @csrf
-                    <input type="hidden" name="productId" value="{{ $product->id }}">
-                    @if ($user)
-                    <input type="hidden" name="userid" value="{{ $user }}">
-                    @endif
-                    <button type="submit" class="cart-button">Add to Cart</button>
-                    </form>   
+            <span class="material-symbols-outlined" id="size">currency_rupee</span><p class="product-price">{{ $product->price }}</p>
+            <form action="" method="post">
+                <input type="hidden" name="productId" value="{{ $product->id }}">
+                <input type="hidden" name="name" value="{{ $product->name }}">
+                <input type="hidden" name="price" value="{{ $product->price }}">
+                <input type="hidden" name="image" value="{{ $product->image }}">
+                <button type="submit" class="buy-button">Buy Now</button>
+            </form>
+            <form action="{{ route('cart') }}" method="post">
+                @csrf
+                <input type="hidden" name="productId" value="{{ $product->id }}">
+                @if ($user)
+                <input type="hidden" name="userid" value="{{ $user }}">
+                @endif
+                <button type="submit" class="cart-button" onclick="this.innerHTML='Adding...';this.form.submit();">Add to Cart</button>
+                
+            </form>   
         </div>
     </div>
     @endforeach
     @endsection
 </body>
 </html>
-
-
-              
-                
-             
-  

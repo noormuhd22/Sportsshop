@@ -1,20 +1,28 @@
+@extends('layout.userstyle')
+
+@section('section')
 
 
 
 
-@extends("layout.theme")
-@section("post")
 <style>
+
+
+/* Custom CSS for styling the table */
+.table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
     .status{
         color: green;
     }
 </style>
 
-@if (session('success'))
-    <div class="alert alert-success">
-        {{ session('success') }}
-    </div>
-@endif
+
+
+
+<div class="container">
 <table class="table">
     <thead>
         <tr>
@@ -45,13 +53,16 @@
             <td>{{ $orders->totalprice }}</td>
             <td>{{ $orders->paymentid }}</td>
             <td>{{ $orders->added_date }}</td>
-            <td class="status">@if ($orders->status == 0)
-                processing
-                @elseif ($orders->status ==1)
-                confirmed
-            @endif</td>
+            <td class="status">
+                @if ($orders->status == 0)
+                    processing
+                @elseif ($orders->status == 1)
+                    confirmed
+                
+                @endif
+            </td>
             <td>
-                <a href="{{ route('order.view', ['id' => $orders->id]) }}">
+                <a href="{{ route('user.view', ['id' => $orders->id]) }}">
                     <button class='btn btn-primary'>View</button>
                 </a>
             </td>
@@ -60,6 +71,16 @@
         @endforeach
     </tbody>
 </table>
+
+
+</div>
+
+
+
+
+
+
+
 
 
 

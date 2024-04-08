@@ -51,6 +51,7 @@ class PaymentController extends Controller
         
                 $order = new Order;
                 $order->userid = $userId;
+                $order->name =$request->input('name');
                 $order->address = $request->input('address');
                 $order->state = $request->input('state');
                 $order->city = $request->input('city');

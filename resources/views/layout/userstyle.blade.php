@@ -34,6 +34,7 @@ ul.topnav li a {
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
+  transition: transform 0.3s ease;
 }
 
 .topnav img{
@@ -42,7 +43,10 @@ ul.topnav li a {
     width:50px;
     
 }
-ul.topnav li a:hover:not(.active) {color: #000000;}
+ul.topnav li a:hover:not(.active) {
+  transform: translatey(-5px);
+  color: #000000;
+}
 
 
 .dropdown-content {
@@ -61,9 +65,13 @@ ul.topnav li a:hover:not(.active) {color: #000000;}
   text-decoration: none;
   display: block;
   text-align: left;
+
 }
 
-.dropdown-content a:hover {background-color: #ddd;}
+.dropdown-content a:hover {
+  background-color: #ddd;
+
+}
 
 
 .dropdown:hover .dropdown-content {
@@ -91,12 +99,12 @@ ul.topnav li.right {
   <li><a href="{{ route('products') }}">Products</a></li>
   <li><a href="{{ route('contactus') }}">Contact us</a></li>
   
-  <li class="right"><a href="{{ route('cart') }}"><span class="material-symbols-outlined">shopping_cart</span> </a></li>
+  <li class="right"><a href="{{ route('cart') }}"><span class="material-symbols-outlined">shopping_cart</span> <span id="cartCount"></span></a></li>
   <li class="right dropdown" id="settingsDropdown"> <!-- Added id to the dropdown content -->
     <a href="#" class="material-symbols-outlined" id="settingsBtn">settings</a> <!-- Added id to the settings link -->
     <div class="dropdown-content">
       <a href="">Profile</a>
-      <a href="">Orders</a>
+      <a href="{{ route('user.orders') }}">Orders</a>
       <a href="{{ route('userlogout')}}">Logout</a>
     </div>
   </li>
@@ -108,18 +116,47 @@ ul.topnav li.right {
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
-<script>
-function initializeDropdown() {
-  var settingsBtn = document.getElementById("settingsBtn");
-  var settingsDropdown = document.getElementById("settingsDropdown");
 
-  settingsBtn.addEventListener("click", function() {
-    settingsDropdown.classList.toggle("open");
+
+
+<script>
+
+  // Initialize the dropdown menu
+  function initializeDropdown() {
+    var settingsBtn = document.getElementById("settingsBtn");
+    var settingsDropdown = document.getElementById("settingsDropdown");
+
+    settingsBtn.addEventListener("click", function() {
+      settingsDropdown.classList.toggle("open");
+    });
+  }
+
+  initializeDropdown(); 
+  // Call updateCartCount function when the page loads
+  $(document).ready(function() {
+    updateCartCount();
   });
+</script>
+
+
+<!-- Add this script in your layout.userstyle blade -->
+<script>
+
+function updateCartCount() {
+    fetch("{{ route('cart.count') }}")
+        .then(response => response.json())
+        .then(data => {
+            console.log(data); // Log the response data to the console
+            $('#cartCount').text(data.count);
+        })
+        .catch(error => console.error('Error:', error));
 }
 
-initializeDropdown(); 
+
 </script>
+
+
+
 
 </body>
 </html>

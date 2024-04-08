@@ -9,6 +9,8 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\ActionController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\OrderstatusController;
+
 use App\Http\Controllers\OrderController;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Product;
@@ -34,6 +36,8 @@ use App\Models\Message;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+
 Route::get('/', function () {
     return view('landingpage');
 }) -> name('landingpage');
@@ -75,6 +79,8 @@ Route::post('/product/{id}/update',[ProductController::class,'update'])->name('p
 
 
 Route::get('/orders',[OrderController::class,'index'])->name('order.index');
+ Route::get('/orders/{id}',[OrderController::class,'show'])->name('order.view'); // Corrected route definition
+
 
 });
 
@@ -125,33 +131,24 @@ Route::post('/usersignup',[UserController::class,'usersignup'])->name('usersignu
 
 
 //middleware for user
-Route::middleware('IsUser')->group( function(){
-
+ Route::middleware('IsUser')->group( function(){
 //user pages
-Route::get('/home', function () {
-    $products = Product::where('status', 0)->get(); 
-return view('user.userhome', ['products' => $products]);
-})->name('home');
-
-Route::get('/categories', function () {
+ Route::get('/home', function () {
+     $products = Product::where('status', 0)->get(); 
+    return view('user.userhome', ['products' => $products]);
+ })->name('home');
+ Route::get('/categories', function () {
     // Retrieve all categories from the database
-    $categories = categories::all();
-    
-    // Return the view 'user.categories' and pass the categories data to it
+     $categories = categories::all(); 
     return view('user.categories', ['categories' => $categories]);
 })->name('categories');
-
-    
-    
-    
-     Route::get('/contactus',function(){
-        return view('user.contactus');
+ Route::get('/contactus',function(){
+    return view('user.contactus');
     })->name('contactus');
-
-     Route::get('/products',function(request $request){
+ Route::get('/products',function(request $request){
       $products = Product::where('status', 0)->get();
       $user = $request->session()->get('user');
-        return view('user.products',['products'=>$products,'user' => $user]);
+    return view('user.products',['products'=>$products,'user' => $user]);
      })->name('products');
 
     
@@ -159,19 +156,19 @@ Route::get('/categories', function () {
     
     
   
-Route::get('/cart', function (Request $request) {
+    Route::get('/cart', function (Request $request) {
     $user = session('user');
     // Fetch only the cart items associated with the logged-in user
     $cart = Cart::where('userid', $user)->get();
     return view('user.cart', ['cart' => $cart,'user' => $user]);
-});
+    });
 
 
 
-Route::get('/logoutuser', function (Request $request) {
+   Route::get('/logoutuser', function (Request $request) {
     $request->session()->forget('user');
     return view('userlogin');
-})->name('userlogout');
+    })->name('userlogout');
 
 //action controller for cart and payment
     Route::post('/cart',[ActionController::class,'cart'])->name('cart');
@@ -181,5 +178,22 @@ Route::get('/logoutuser', function (Request $request) {
     Route::get('cart/checkout', [ActionController::class, 'checkout'])->name('checkout');
     Route::post('/payment-process',[PaymentController::class,'paymentProcess'])->name('payment.process');
     Route::get('/payment-success',[PaymentController::class,'paymentSuccess'])->name('payment.success');
+
+//user ordr and vieww page
+    Route::get('/order',[OrderstatusController::class,'index'])->name('user.orders');
+    Route::get('/orderview/{id}',[OrderstatusController::class,'show'])->name('user.view');
+
+
+
+   
+    
+    //cart count
+Route::get('/cart/count', function (Request $request) {
+    $user = $request->session()->get('user');
+    
+    $cartCount = Cart::where('userid', $user)->count(); // Assuming you have a method to get the cart count
+    
+    return response()->json(['count' => $cartCount]);
+})->name('cart.count');
 
 });
