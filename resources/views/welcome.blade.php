@@ -11,8 +11,6 @@
 </style>
 <h1>Welcome to My Website</h1>
 <p>This is a paragraph below the navigation bar.</p>
-@endsection
-@section("content")
 
 <img src="welcome-in-design-banner-template-for-web-vector-24072319.jpg" alt="img">
 

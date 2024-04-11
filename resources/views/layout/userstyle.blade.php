@@ -92,6 +92,20 @@ ul.topnav li.right {
   margin-left: 25px;
   float: right;
 }
+footer {
+  background-color:#007bff;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+            margin-top: 80px;
+        }
+        footer p {
+            margin-bottom: 10px;
+        }
+        footer a {
+            color: #fff;
+            text-decoration: none;
+        }
 
 @media screen and (max-width: 600px) {
   ul.topnav li.right, 
@@ -120,6 +134,14 @@ ul.topnav li.right {
 </ul>
 
 @yield("section")
+
+
+  
+<footer>
+  <p>Contact us at +918137850467 or <a href="mailto:[Noormuhammed12345678@gmail.com]">Noormuhammed12345678@gmail.com</a>. Visit us at Street Address, City, State, Zip Code. Follow us on [Social Media Handle] for updates and promotions.</p>
+  <p>&copy; 2024 Sports Shop . All rights reserved.</p>
+</footer>
+
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>

@@ -11,6 +11,7 @@
     .contact-us-container {
         margin-top: 50px;
         text-align: center;
+        height: 700px; 
     }
 
     .contact-us-image {

@@ -7,11 +7,15 @@
 
 <style>
 
-
+.container{
+    height: 900px; 
+}
 /* Custom CSS for styling the table */
 .table {
     width: 100%;
     border-collapse: collapse;
+   
+  
 }
 
     .status{

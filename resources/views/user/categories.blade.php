@@ -7,6 +7,7 @@
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
+        height: 900px; 
         gap: 30px; 
     }
 

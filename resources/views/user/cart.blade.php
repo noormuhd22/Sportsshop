@@ -10,6 +10,7 @@
             width: 80%;
             margin: 0 auto;
             padding: 20px;
+            height: 900px; 
         }
 .container img{
     height: 100px;

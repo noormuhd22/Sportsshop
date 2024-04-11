@@ -79,7 +79,7 @@ Route::post('/product/{id}/update',[ProductController::class,'update'])->name('p
 
 
  //group of orders
- Route:prefix('orders')->group(function(){
+ Route::prefix('orders')->group(function(){
  //orders
  Route::get('/',[OrderController::class,'index'])->name('order.index');
  Route::get('/{id}',[OrderController::class,'show'])->name('order.view'); // Corrected route definition
