@@ -19,4 +19,19 @@ class OrderController extends Controller
      $orderitems = Orderitems::where('order_id', $id)->get(); 
      return view('order.view',['order'=>$order,'orderitems' => $orderitems]);
     }
+
+   public function changeStatus(  Request $request, $id){
+
+    
+
+        $order = Order::findOrFail($id);
+
+        $order->status = $request->input('status');
+        $order->save();
+        
+    
+        return redirect()->route('order.index');
+    
+   }
+
 }

@@ -35,6 +35,7 @@
             <th scope="col">Mobile</th>
             <th scope="col">Total Price</th>
             <th scope="col">Payment ID</th>
+            <th scope="col">Order ID</th>
             <th scope="col">Date</th>
             <th scope="col">Status</th>
             <th scope="col">Edit</th>
@@ -52,6 +53,7 @@
             <td>{{ $orders->mobile }}</td>
             <td>{{ $orders->totalprice }}</td>
             <td>{{ $orders->paymentid }}</td>
+            <td>{{ $orders->id }}</td>
             <td>{{ $orders->added_date }}</td>
             <td class="status">
                 @if ($orders->status == 0)

@@ -59,7 +59,7 @@ Route::middleware(['IsAdmin'])->group(function () {
         Route::post('/{id}/update',[CustomerController::class,'update'])->name('customer.update');
         Route::get('/{id}/delete',[CustomerController::class,'delete']);
     });
-
+//admin  product
 Route::get('/product', [ProductController::class, 'index'])->name('products.index');
 Route::get('/product/form', [ProductController::class, 'form'])->name('product.create');
 Route::post('/product/create', [ProductController::class, 'store'])->name('products.store');
@@ -67,7 +67,7 @@ Route::get('/produt/{id}',[ProductController::class,'edit'])->name('product.edit
 Route::get('/product/{id}/delete',[ProductController::class,'delete'])->name('product.delete');
 Route::post('/product/{id}/update',[ProductController::class,'update'])->name('product.update');
 
-
+//admin category
  Route::prefix('category')->group(function(){
   Route::get('/',[CategoryController::class,'index'])->name('category.index');
   Route::get('/form',[CategoryController::class,'create'])->name('category.create');
@@ -77,10 +77,13 @@ Route::post('/product/{id}/update',[ProductController::class,'update'])->name('p
   Route::get('/{id}/delete',[CategoryController::class,'delete'])->name('category.delete');
 });
 
-
+//orders
 Route::get('/orders',[OrderController::class,'index'])->name('order.index');
  Route::get('/orders/{id}',[OrderController::class,'show'])->name('order.view'); // Corrected route definition
 
+
+ //change status ---new
+Route::post('/orders/updatestatus/{id}',[OrderController::class,'changeStatus'])->name('update.status');
 
 });
 
