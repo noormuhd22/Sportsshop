@@ -88,6 +88,11 @@
                     <p class="totalprice">Total Price: {{ $order->totalprice }}</p>
                     <p>Payment ID: {{ $order->paymentid }}</p>
                     <p>Order Date: {{ $order->added_date }}</p>
+                    <p>Order Status : @if($order->status == 0)
+                        Processing @elseif ($order->status ==1)
+                        Confirmed @elseif ($order->status ==2)
+                        Shipped @else
+                        Delivered  @endif</p>
                 </td>
             </tr>
         </table>
