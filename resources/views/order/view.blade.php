@@ -6,10 +6,10 @@
         text-align: center;
         padding: 20px;
         font-size: 30px;
-        color: #4b16ad;
+        color: #007bff;
     }
     h4 {
-        color: #4b16ad;
+        color: #007bff;
     }
     table {
         width: 100%;

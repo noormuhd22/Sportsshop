@@ -64,7 +64,10 @@
                     processing
                 @elseif ($orders->status == 1)
                     confirmed
-                
+                @elseif($orders->status ==2)
+                   Shipped
+                @else
+                Delivered
                 @endif
             </td>
             <td>
