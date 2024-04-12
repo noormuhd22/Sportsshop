@@ -45,9 +45,13 @@
     strong{
         color: rgb(44, 172, 222);
     }
-
+h5{
+    margin-top: 50px;
+    text-align: center;
+    color:  rgb(44, 172, 222);
+}
 </style>
-
+<h5>Welcome to SportShop - Your Ultimate Destination for Sports Gear! </h5>
 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
     <ol class="carousel-indicators">
         @foreach ($products as $index => $product)
