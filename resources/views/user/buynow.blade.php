@@ -85,7 +85,7 @@
                 <td class="subtotal" id="subtotal_{{ $products->id }}">${{ $subtotal }}</td>
                 <td>${{ $products->price }}</td>
             </tr>
-        @endforeach
+       
         <tr class="total-price">
             <td colspan="4">Total</td>
             <td id="totalPrice">${{ $totalPrice }}</td>
@@ -105,7 +105,7 @@
                 <label for="name">Name:</label>
                 <input type="text" class="form-control" id="name" name="name" required>
             </div>
-            <input type="hidden" value="{{ $products->id }}" name="productId">
+            <input type="hidden" value="{{ $products->id }}" name="productId" id="productId">
             <div class="form-group">
                 <label for="address">Address:</label>
                 <textarea class="form-control" id="address" name="address" rows="3" required></textarea>
@@ -128,7 +128,7 @@
             </div>
         </form>
     </div>
-   
+    @endforeach
   <a href="javascript:void(0)"> <button id="placeOrderBtn" class="btn btn-primary">Place Order</button></a>
 </div>
 
@@ -145,6 +145,7 @@
             var city = $j("#city").val();
             var pincode = $j("#pincode").val();
             var mobile = $j("#mobile").val();
+            var productId =$j("#productId").val();
 
             // Regular expressions for mobile number and pincode validation
             var mobileRegex = /^[0-9]{10}$/;
@@ -180,6 +181,7 @@
                                 city: city,
                                 pincode: pincode,
                                 mobile: mobile,
+                                productId: productId,
                             },
                             success: function (data) {
                                 // Redirect to paymentsuccess blade file upon successful payment processing

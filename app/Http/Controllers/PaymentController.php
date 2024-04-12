@@ -152,7 +152,6 @@ class PaymentController extends Controller
                     $orderItem->quantity = 1;
                     $orderItem->price = $products->price;
                     $orderItem->image =$products->image;
-                   
                     $orderItem->save();
              
                }
