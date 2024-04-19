@@ -11,11 +11,14 @@
  .container{
         width: 500px;
         margin-top: 200px;
-        background-color:#4b16ad;
+        background-color: #007bff;
         color:white;
     padding: 20px;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 10, 0.67);
+    }
+    p a {
+      color: white;
     }
 </style>
 <body>

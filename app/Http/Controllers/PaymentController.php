@@ -48,7 +48,7 @@ class PaymentController extends Controller
         
             // Process order data within a database transaction
             \DB::transaction(function () use ($request) {
-                $userId = $request->session()->get('user');
+                $userId = $request->session()->get('user')['id'];
         
                 $order = new Order;
                 $order->userid = $userId;
@@ -65,7 +65,7 @@ class PaymentController extends Controller
         
                 // Create order items
                 $cartItems = Cart::where('userid', $userId)->get();
-                $userId = $request->session()->get('user');
+                $userId = $request->session()->get('user')['id'];
                 foreach ($cartItems as $cartItem) {
                     $orderItem = new orderitems;
                     $orderItem->order_id = $order->id;
@@ -120,7 +120,7 @@ class PaymentController extends Controller
         
             // Process order data within a database transaction
             \DB::transaction(function () use ($request) {
-                $userId = $request->session()->get('user');
+                $userId = $request->session()->get('user')['id'];
         
                 $order = new Order;
                 $order->userid = $userId;
@@ -142,7 +142,7 @@ class PaymentController extends Controller
             
                 $product = product::where('id',$productid)->get();
 
-                $userId = $request->session()->get('user');
+                $userId = $request->session()->get('user')['id'];
                foreach($product as $products){
                     $orderItem = new orderitems;
                     $orderItem->order_id = $order->id;

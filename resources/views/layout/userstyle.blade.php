@@ -92,6 +92,19 @@ ul.topnav li.right {
   margin-left: 25px;
   float: right;
 }
+
+#user{
+  margin-top: 18px;
+  display: block;
+  color: rgb(255, 255, 255);
+  text-align: center;
+  padding: 8px 16px;
+  text-decoration: none;
+  transition: transform 0.3s ease;
+  background-color: red;
+  border-radius: 5px;
+}
+
 footer {
   background-color:#007bff;
             color: #fff;
@@ -121,6 +134,7 @@ footer {
   <li><a href="{{ route('categories') }}">Categories</a></li>
   <li><a href="{{ route('products') }}">Products</a></li>
   <li><a href="{{ route('contactus') }}">Contact us</a></li>
+ 
   
   <li class="right"><a href="{{ route('cart') }}"><span class="material-symbols-outlined">shopping_cart</span> <span id="cartCount"></span></a></li>
   <li class="right dropdown" id="settingsDropdown"> <!-- Added id to the dropdown content -->
@@ -131,6 +145,7 @@ footer {
       <a href="{{ route('userlogout')}}">Logout</a>
     </div>
   </li>
+  <li class="right" id="user"  >{{ session('user')['name'] }}</li>
 </ul>
 
 @yield("section")

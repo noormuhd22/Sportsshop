@@ -13,7 +13,7 @@
     }
     .card {
       margin-top: 200px;
-      background-color: #4b16ad; /* White background */
+      background-color:  #007bff; /* White background */
       color: #ffffff; /* Black text */
       border-radius: 10px; /* Rounded corners */
     }
@@ -23,14 +23,14 @@
     }
  
 
-    a {
+    p a {
       color: #ffffff; /* Blue link color */
     }
     a:hover {
       text-decoration: none; /* Remove underline on hover */
     }
     a button{
-      background-color: #4b16ad;
+      background-color:  #007bff;
       color: white;
       padding:  5px;
     height: 40px;
@@ -74,7 +74,7 @@
             <button type="submit" class="btn btn-primary btn-login">Login</button>
           </form>
           <div class="mt-3">
-            <p>Create an account <a href="{{ route('signuppage') }}">Signup</a></p>
+            <p>Create an account ? <a href="{{ route('signuppage') }}">Signup</a></p>
           </div>
         </div>
       </div>

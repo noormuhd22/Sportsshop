@@ -116,7 +116,7 @@ public function updateQuantity(Request $request)
 
 public function checkout(Request $request){
     
-    $user = session('user');
+    $user = $request->session()->get('user')['id'];
 
     // Fetch only the cart items associated with the logged-in user
     $cart = Cart::where('userid', $user)->get();
@@ -129,7 +129,7 @@ public function checkout(Request $request){
 
 public function buynowCheckout(Request $request){
 
-$user = session('user');
+$user = $request->session()->get('user')['id'];
 $productid = $request->input('productId');
 
 $product = product::where('id',$productid)->get();

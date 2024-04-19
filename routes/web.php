@@ -23,6 +23,7 @@ use App\Models\Message;
 
 
 
+
 //
 
 
@@ -151,10 +152,13 @@ return view('userlogin');
    //middleware for user
 Route::middleware('IsUser')->group( function(){
 //user home,categories,contactus,product pages
-Route::get('/home', function () {
+
+Route::get('/home', function (Request $request) {
 $products = Product::where('status', 0)->get(); 
-return view('user.userhome', ['products' => $products]);
+$user = $request->session()->get('user')['name'];
+return view('user.userhome', ['products' => $products,'user'=>$user]);
 })->name('home');
+
 Route::get('/categories', function () {
 $categories = categories::all(); 
 return view('user.categories', ['categories' => $categories]);
@@ -164,11 +168,11 @@ return view('user.contactus');
 })->name('contactus');
 Route::get('/products',function(request $request){
 $products = Product::where('status', 0)->get();
-$user = $request->session()->get('user');
+$user = $request->session()->get('user')['id'];
 return view('user.products',['products'=>$products,'user' => $user]);
 })->name('products');
 Route::get('/cart', function (Request $request) {
-$user = session('user');
+$user = session('user')['id'];
 $cart = Cart::where('userid', $user)->get();
 return view('user.cart', ['cart' => $cart,'user' => $user]);
 });
@@ -206,7 +210,7 @@ Route::get('/orderview/{id}',[OrderstatusController::class,'show'])->name('user.
     
  //cart count
  Route::get('/cart/count', function (Request $request) {
- $user = $request->session()->get('user');
+ $user = $request->session()->get('user')['id'];
  $cartCount = Cart::where('userid', $user)->count(); // Assuming you have a method to get the cart count
  //response sent through ajax
 return response()->json(['count' => $cartCount]);

@@ -13,7 +13,7 @@
   .container{
         width: 500px;
         margin-top: 200px;
-        background-color:#4b16ad;
+        background-color: #007bff;
         color:white;
     padding: 20px;
     border-radius: 5px;
@@ -23,7 +23,7 @@
       text-align: center;
      }
      a button{
-      background-color: #4b16ad;
+      background-color:  #007bff;
       color: white;
       padding:  5px;
      height: 40px;
@@ -31,6 +31,9 @@
       width: 70px;
       border-radius: 5px;
       border: none;
+     }
+     p a{
+      color: white;
      }
 </style>
 <body>

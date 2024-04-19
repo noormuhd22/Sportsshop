@@ -22,7 +22,8 @@
         }
         .navbar {
             background-color: #007bff;
-            height: 300px;
+            height: 200px;
+            width: 100%;
           
         }
         .navbar-brand {
@@ -37,8 +38,7 @@
         }
         #right{
           float: right;
-    
-          margin-left: 900px;
+          margin-left: 800px;
         }
       
     </style>

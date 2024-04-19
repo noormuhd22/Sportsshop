@@ -10,7 +10,7 @@ class OrderstatusController extends Controller
  
 public function index(Request $request){
 
-$userId = $request->session()->get('user');
+$userId = $request->session()->get('user')['id'];
 $order = Order::where('userid', $userId)->get();
 
 return view('user.orders',['order' => $order]);

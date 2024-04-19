@@ -13,12 +13,12 @@
   }
   .card {
     margin-top: 200px;
-    background-color: #4b16ad; /* White background */
+    background-color: #007bff; /* White background */
     color: #ffffff; /* Black text */
     border-radius: 10px; /* Rounded corners */
   }
   .card-header {
-    background-color: #4b16ad; /* Blue header background */
+    background-color: #007bff; /* Blue header background */
     color: #fff; /* White text */
     text-align: center;
     border-top-left-radius: 10px; /* Rounded corners for top */
@@ -30,7 +30,7 @@
   
 
   .btn-signup:hover {
-    background-color: #4b16ad; /* Darker blue on hover */
+    background-color: #007bff; /* Darker blue on hover */
   }
   a {
     color:#ffffff; /* Blue link color */
