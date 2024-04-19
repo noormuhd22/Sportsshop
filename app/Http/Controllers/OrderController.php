@@ -8,7 +8,8 @@ use Illuminate\Http\Request;
 class OrderController extends Controller
 {
     public function index(){
-        $order = order::all();
+        $order = Order::orderByDesc('created_at')->get();
+       
         return view('order.index',['order'=>$order]);
     }
 

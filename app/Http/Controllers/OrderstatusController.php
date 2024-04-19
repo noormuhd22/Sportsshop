@@ -11,7 +11,10 @@ class OrderstatusController extends Controller
 public function index(Request $request){
 
 $userId = $request->session()->get('user')['id'];
-$order = Order::where('userid', $userId)->get();
+
+$order = Order::where('userid', $userId)
+                ->orderByDesc('created_at')
+                ->get();
 
 return view('user.orders',['order' => $order]);
 
