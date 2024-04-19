@@ -21,7 +21,7 @@
             border-radius: 12px;
         }
         .btn-login {
-            background-color: #007bff;
+            background-color:#4b16ad;
             color: #fff;
             border: none;
             padding: 10px 20px;
@@ -31,11 +31,11 @@
             transition: background-color 0.3s ease;
         }
         .btn-login:hover {
-            background-color: #0056b3;
+            background-color: #5f29c3;
         }
         h2 {
             text-align: center;
-            color: #007bff; /* Blue color for the heading */
+            color:#4b16ad; /* Blue color for the heading */
         }
         p {
             font-size: 18px;

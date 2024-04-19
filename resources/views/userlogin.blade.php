@@ -17,8 +17,21 @@
         color:white;
     padding: 20px;
     border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 10, 0.67);
     }
-     
+     h4{
+      text-align: center;
+     }
+     a button{
+      background-color: #4b16ad;
+      color: white;
+      padding:  5px;
+     height: 40px;
+      margin: 10px;
+      width: 70px;
+      border-radius: 5px;
+      border: none;
+     }
 </style>
 <body>
   
@@ -27,6 +40,7 @@
     {{ session('success') }}
 </div>
 @endif
+<a href="/"><button >Back</button></a>
   <div class="container ">
     
           <h4>Login Page</h4>
@@ -63,7 +77,11 @@
             </div>
           </div>
         </div>
-      
+        <br>
+        <br>
+        <br>
+    
+
 
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

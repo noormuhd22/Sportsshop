@@ -12,38 +12,33 @@
       background-color: #f8f9fa; /* Light gray background */
     }
     .card {
-      margin-top: 100px;
-      background-color: #fff; /* White background */
-      color: #000; /* Black text */
-      border: 2px solid #319ef0; /* Blue border */
+      margin-top: 200px;
+      background-color: #4b16ad; /* White background */
+      color: #ffffff; /* Black text */
       border-radius: 10px; /* Rounded corners */
     }
-    .card-header {
-      background-color: #0ba9f3; /* Blue header background */
-      color: #fff; /* White text */
-      text-align: center;
-      border-top-left-radius: 10px; /* Rounded corners for top */
-      border-top-right-radius: 10px;
-    }
+   
     .card-body {
       padding: 20px; /* Add padding */
     }
-    .form-group label {
-      font-weight: bold; /* Make labels bold */
-    }
-    .btn-login {
-      background-color: #007bff; /* Blue button */
-      border-color: #007bff;
-    }
-    .btn-login:hover {
-      background-color: #0056b3; /* Darker blue on hover */
-    }
+ 
+
     a {
-      color: #319ef0; /* Blue link color */
+      color: #ffffff; /* Blue link color */
     }
     a:hover {
       text-decoration: none; /* Remove underline on hover */
     }
+    a button{
+      background-color: #4b16ad;
+      color: white;
+      padding:  5px;
+    height: 40px;
+      margin: 10px;
+      width: 70px;
+      border-radius: 5px;
+      border: none;
+     }
   </style>
 </head>
 <body>
@@ -52,14 +47,14 @@
     {{ session('success') }}
 </div>
 @endif
+<a href="/"><button>Back</button></a>
+
 <div class="container mt-5">
   <div class="row justify-content-center">
     <div class="col-md-6">
       <div class="card">
-        <div class="card-header">
-          Login Page
-        </div>
         <div class="card-body">
+          <h3>Admin Login</h3>
           <form action="{{ route('login') }}" method="POST">
             @csrf
             <div class="form-group">

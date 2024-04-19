@@ -15,13 +15,13 @@
         color:white;
     padding: 20px;
     border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 10, 0.67);
     }
 </style>
 <body>
- 
   <div class="container ">
    
-        <h4>Signup Page</h4>
+        <h4>Create Account</h4>
           
          
             <form action="{{ route('usersignup') }}" method="POST">

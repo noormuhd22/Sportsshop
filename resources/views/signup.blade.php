@@ -12,14 +12,13 @@
     background-color: #f8f9fa; /* Light gray background */
   }
   .card {
-    margin-top: 100px;
-    background-color: #fff; /* White background */
-    color: #000; /* Black text */
-    border: 2px solid #319ef0; /* Blue border */
+    margin-top: 200px;
+    background-color: #4b16ad; /* White background */
+    color: #ffffff; /* Black text */
     border-radius: 10px; /* Rounded corners */
   }
   .card-header {
-    background-color: #0ba9f3; /* Blue header background */
+    background-color: #4b16ad; /* Blue header background */
     color: #fff; /* White text */
     text-align: center;
     border-top-left-radius: 10px; /* Rounded corners for top */
@@ -28,18 +27,13 @@
   .card-body {
     padding: 20px; /* Add padding */
   }
-  .form-group label {
-    font-weight: bold; /* Make labels bold */
-  }
-  .btn-signup {
-    background-color: #007bff; /* Blue button */
-    border-color: #007bff;
-  }
+  
+
   .btn-signup:hover {
-    background-color: #0056b3; /* Darker blue on hover */
+    background-color: #4b16ad; /* Darker blue on hover */
   }
   a {
-    color: #319ef0; /* Blue link color */
+    color:#ffffff; /* Blue link color */
   }
   a:hover {
     text-decoration: none; /* Remove underline on hover */
@@ -50,10 +44,11 @@
     <div class="row justify-content-center">
       <div class="col-md-6">
         <div class="card">
-          <div class="card-header">
-            Signup Form
-          </div>
+    
+       
+     
           <div class="card-body">
+            <h3>Signup</h3>
             <form action="{{ route('signup') }}" method="POST">
               @csrf
               <div class="form-group">
