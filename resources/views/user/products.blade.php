@@ -98,7 +98,7 @@
         <img src="{{ asset('uploads/' . $product->image) }}" alt="image" class="product-image">
         <div class="product-details">
             <h2 class="product-title">{{ $product->name }}</h2>
-            <p class="product-description">Product description goes here. Keep it concise and informative.</p>
+            <p class="product-description">{{ $product->description }}</p>
             <span class="material-symbols-outlined" id="size">currency_rupee</span><p class="product-price">{{ $product->price }}</p>
            
             <form action="{{ route('buynow.checkout') }}" method="post">

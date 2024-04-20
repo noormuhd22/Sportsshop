@@ -67,7 +67,7 @@
         @if (count($cart) > 0)
             <table>
                 <tr>
-                    <th>Discription</th>
+                    <th>Description</th>
                     <th></th>
                     <th>Qty</th>
                     <th>Unit price</th>

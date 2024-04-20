@@ -15,6 +15,7 @@
             <th scope="col">Name</th>
             <th scope="col">Price</th>
             <th scope="col">Category</th>
+            <th scope="col">Description</th>
             <th scope="col">Edit</th>
             <th scope="col">Delete</th>
         </tr>
@@ -26,6 +27,7 @@
             <td>{{ $products->name }}</td>
             <td>{{ $products->price }}</td>
             <td>{{ $products->categoryname }}</td>
+            <td>{{ $products->description }}</td>
             <td>
                 <a href="{{Route('product.edit',['id'=>$products->id]) }}">
                     <button class='btn btn-primary'>Edit</button>

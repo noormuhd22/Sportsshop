@@ -38,6 +38,13 @@
     </div>
 
     <div class="mb-3">
+        <label for="description" class="form-label">Description</label>
+        <textarea name="description" id="description" cols="30" rows="10" class="form-control" value="{{ $product->description }}" >{{ $product->description }}</textarea>
+
+   
+    </div>
+
+    <div class="mb-3">
         <img src="{{ asset('uploads/' . $product->image) }}" alt="img" height="70px" width="70px">
         <label for="photo" class="form-label">Photo</label>
         <input type="file" class="form-control" id="photo" name="photo" accept="image/*" >

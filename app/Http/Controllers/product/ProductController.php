@@ -54,6 +54,7 @@ class ProductController extends Controller
         $product->name = $request->name;
         $product->price = $request->price;
         $product->categoryname = $request->categoryname;
+        $product->description = $request->description;
 
         // Handle file upload
         if ($request->hasFile('photo')) {
@@ -129,6 +130,7 @@ class ProductController extends Controller
     $product->name = $request->name;
     $product->price = $request->price;
     $product->categoryname = $request->categoryname;
+    $product->description = $request->description; 
     // $product->image = $imageName==null?$product->image : $imageName;
     if($imageName){
       $product->image = $imageName;
