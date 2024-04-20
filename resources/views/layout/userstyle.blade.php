@@ -140,7 +140,7 @@ footer {
   <li class="right dropdown" id="settingsDropdown"> <!-- Added id to the dropdown content -->
     <a href="#" class="material-symbols-outlined" id="settingsBtn">settings</a> <!-- Added id to the settings link -->
     <div class="dropdown-content">
-      <a href="">Profile</a>
+      <a href="{{ route('profile.view') }}">Profile</a>
       <a href="{{ route('user.orders') }}">Orders</a>
       <a href="{{ route('userlogout')}}">Logout</a>
     </div>

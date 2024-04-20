@@ -10,6 +10,7 @@ use App\Http\Controllers\ActionController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\OrderstatusController;
+use App\Http\Controllers\ProfileController;
 
 use App\Http\Controllers\OrderController;
 use Illuminate\Support\Facades\Auth;
@@ -215,5 +216,11 @@ Route::get('/orderview/{id}',[OrderstatusController::class,'show'])->name('user.
  //response sent through ajax
 return response()->json(['count' => $cartCount]);
 })->name('cart.count');
+
+
+
+//profile view
+Route::get('/profile',[ProfileController::class,'index'])->name('profile.view');
+Route::post('/profile/update',[ProfileController::class,'update'])->name('profile.update');
 
 });
