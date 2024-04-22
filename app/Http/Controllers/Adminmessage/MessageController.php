@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Adminmessage;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Message; 
+use App\Models\order;
+use App\Models\userlogged;
 class MessageController extends Controller
 {
     //
@@ -18,6 +20,8 @@ return view('message.message',['message'=>$message]);
     }
 
     public function viewadminhome(){
-        return view('message.welcome');
+        $order = order::all()->count();
+        $user =userlogged::all()->count();
+        return view('message.welcome',['order'=>$order,'user' => $user]);
 }
 }

@@ -54,8 +54,6 @@ Route::get('/welcome',[MessageController::class,'viewadminhome']);
  Route::middleware(['IsAdmin'])->group(function () {
  Route::prefix('customers')->group(function () {
  Route::get('/', [CustomerController::class, 'index'])->name('customer.index');
- Route::get('/form', [CustomerController::class, 'form'])->name('customer.create');
- Route::post('/create', [CustomerController::class, 'store'])->name('customer.store');
  Route::get('/{id}',[CustomerController::class,'edit'])->name('customer.edit');
  Route::post('/{id}/update',[CustomerController::class,'update'])->name('customer.update');
  Route::get('/{id}/delete',[CustomerController::class,'delete']);
@@ -143,7 +141,7 @@ Route::get('/logoutuser', function (Request $request) {
 
 
  $request->session()->forget('user');
-return view('userlogin');
+return view('userlogin.userlogin');
 })->name('userlogout');
 
 
