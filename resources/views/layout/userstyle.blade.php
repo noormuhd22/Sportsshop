@@ -3,6 +3,7 @@
 <head>
   <title>Sample Project</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
@@ -129,7 +130,7 @@ footer {
 <body>
 
 <ul class="topnav">
-  <li><a href="#"><img src="{{ asset('logo.jpg') }}" alt="img">  </a></li>
+  <li><a href="#"><img src="{{ asset('logo.ico') }}" alt="img">  </a></li>
   <li><a href="/home">Home</a></li>
   <li><a href="{{ route('categories') }}">Categories</a></li>
   <li><a href="{{ route('products') }}">Products</a></li>

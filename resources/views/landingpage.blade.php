@@ -46,7 +46,7 @@
 </head>
 <body>
     <div class="container">  
-        <img src="logo.jpg" alt="Logo" class="logo">
+        <img src="logo.ico" alt="Logo" class="logo">
         <h2>Welcome to Our System</h2>
         <p>Please select the appropriate login option below:</p>
         <a href="{{ route('userloginpage') }}"><button type="submit" class="btn btn-primary btn-login">User Login</button></a>

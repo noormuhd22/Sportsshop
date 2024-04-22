@@ -79,7 +79,7 @@ class AuthController extends Controller
     }
     public function logout(Request $request){
       $request->session()->forget('admin');
-    return view('login');
+    return view('Adminlogin.login');
     
     }
 }
