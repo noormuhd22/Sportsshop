@@ -49,7 +49,7 @@ class UserController extends Controller
 
 
     public function userSignuppage(){
-         return view('usersignup');
+         return view('Userlogin.usersignup');
     }
 
     

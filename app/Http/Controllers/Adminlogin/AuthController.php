@@ -13,12 +13,12 @@ use Illuminate\Support\Facades\DB;
 class AuthController extends Controller
 {
     public function showsignup(){
-        return view('signup');
+        return view('Adminlogin.signup');
     }
 
 
     public function loginpage(){
-        return view('login');
+        return view('Adminlogin.login');
     }
 
     

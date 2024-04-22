@@ -10,7 +10,7 @@ class MessageController extends Controller
 
     public function viewMessage(){
         $message = message::all();
-return view('message',['message'=>$message]);
+return view('message.message',['message'=>$message]);
     }
 
     public function viewTest(Request $request){
@@ -18,6 +18,6 @@ return view('message',['message'=>$message]);
     }
 
     public function viewadminhome(){
-        return view('welcome');
+        return view('message.welcome');
 }
 }
