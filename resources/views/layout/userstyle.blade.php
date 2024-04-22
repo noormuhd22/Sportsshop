@@ -134,6 +134,7 @@ footer {
   <li><a href="{{ route('categories') }}">Categories</a></li>
   <li><a href="{{ route('products') }}">Products</a></li>
   <li><a href="{{ route('contactus') }}">Contact us</a></li>
+  <li><a href="{{ route('aboutus') }}">About Us</a></li>
  
   
   <li class="right"><a href="{{ route('cart') }}"><span class="material-symbols-outlined">shopping_cart</span> <span id="cartCount"></span></a></li>

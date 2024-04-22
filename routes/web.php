@@ -4,15 +4,16 @@ use App\Http\Middleware\IsUser;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Customer\CustomerController;
 use App\Http\Controllers\Product\ProductController;
-use App\Http\Controllers\AuthController;
-use App\Http\Controllers\UserController;
-use App\Http\Controllers\ActionController;
-use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\PaymentController;
-use App\Http\Controllers\OrderstatusController;
-use App\Http\Controllers\ProfileController;
-
-use App\Http\Controllers\OrderController;
+use App\Http\Controllers\Adminlogin\AuthController;
+use App\Http\Controllers\User\UserController;
+use App\Http\Controllers\User\ActionController;
+use App\Http\Controllers\Category\CategoryController;
+use App\Http\Controllers\User\PaymentController;
+use App\Http\Controllers\User\OrderstatusController;
+use App\Http\Controllers\User\ProfileController;
+use App\Http\Controllers\User\Index\ShowpageController;
+use App\Http\Controllers\Adminorders\OrderController;
+use App\Http\Controllers\Adminmessage\MessageController;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Product;
 use App\Models\categories;
@@ -44,9 +45,7 @@ Route::get('/', function () {
     return view('landingpage');
 }) -> name('landingpage');
 
-Route::get('/welcome', function () {
-    return view('welcome');
-});
+Route::get('/welcome',[MessageController::class,'viewadminhome']);
 
 
 
@@ -89,14 +88,18 @@ Route::post('/product/{id}/update',[ProductController::class,'update'])->name('p
  Route::post('/updatestatus/{id}',[OrderController::class,'changeStatus'])->name('update.status');
 
  });
+
  });
 
 
-//logout,login and signup for adminpage
-Route::get('/logout', function (Request $request) {
-$request->session()->forget('admin');
-return view('login');
-})->name('logout');
+
+
+
+Route::get('/logout',[AuthController::class,'logout'])->name('logout');
+
+
+
+
 Route::get('/showsignup',[AuthController::class,'showsignup'])->name('signuppage');
 Route::post('/signup',[AuthController::class,'signup'])->name('signup');
 Route::get('/loginpage',[AuthController::class,'loginpage'])->name('loginpage');
@@ -105,17 +108,14 @@ Route::post('/login',[AuthController::class,'login'])->name('login');
 
 
 //route to display all the session
-Route::get('/test', function(Request $request){
- dd($request->session()->all());
-});
+Route::get('/test',[MessageController::class,'viewTest']);
+
 
 
 
 //admin message
-Route::get('/message',function(){
-$message = message::all();
-return view('message',['message'=>$message]);
-});
+Route::get('/message',[MessageController::class,'viewMessage']);
+
 
 
 
@@ -143,40 +143,26 @@ Route::post('/userlogin',[UserController::class,'userLogin'])->name('userlogin')
 Route::get('/usersignuppage',[UserController::class,'userSignuppage'])->name('usersignuppage');
 Route::post('/usersignup',[UserController::class,'usersignup'])->name('usersignup');
 Route::get('/logoutuser', function (Request $request) {
-$request->session()->forget('user');
+
+
+
+ $request->session()->forget('user');
 return view('userlogin');
 })->name('userlogout');
 
 
 
 
-   //middleware for user
+//middleware for user
 Route::middleware('IsUser')->group( function(){
 //user home,categories,contactus,product pages
+Route::get('/home',[ShowpageController::class,'viewHome']) ->name('home');
+Route::get('/categories',[ShowpageController::class,'viewCategory'])->name('categories');
+Route::get('/contactus',[ShowpageController::class,'viewContactus'])->name('contactus');
+Route::get('/products',[ShowpageController::class,'viewProducts'])->name('products');
+Route::get('/cart',[ShowpageController::class,'viewCart']);
+Route::get('/aboutus',[ShowpageController::class,'viewAboutus'])->name('aboutus');
 
-Route::get('/home', function (Request $request) {
-$products = Product::where('status', 0)->get(); 
-$user = $request->session()->get('user')['name'];
-return view('user.userhome', ['products' => $products,'user'=>$user]);
-})->name('home');
-
-Route::get('/categories', function () {
-$categories = categories::all(); 
-return view('user.categories', ['categories' => $categories]);
-})->name('categories');
-Route::get('/contactus',function(){
-return view('user.contactus');
-})->name('contactus');
-Route::get('/products',function(request $request){
-$products = Product::where('status', 0)->get();
-$user = $request->session()->get('user')['id'];
-return view('user.products',['products'=>$products,'user' => $user]);
-})->name('products');
-Route::get('/cart', function (Request $request) {
-$user = session('user')['id'];
-$cart = Cart::where('userid', $user)->get();
-return view('user.cart', ['cart' => $cart,'user' => $user]);
-});
 
 
 
@@ -205,20 +191,7 @@ Route::get('/payment-success',[PaymentController::class,'paymentSuccess'])->name
 Route::get('/order',[OrderstatusController::class,'index'])->name('user.orders');
 Route::get('/orderview/{id}',[OrderstatusController::class,'show'])->name('user.view');
 
-
-
-   
-    
- //cart count
- Route::get('/cart/count', function (Request $request) {
- $user = $request->session()->get('user')['id'];
- $cartCount = Cart::where('userid', $user)->count(); // Assuming you have a method to get the cart count
- //response sent through ajax
-return response()->json(['count' => $cartCount]);
-})->name('cart.count');
-
-
-
+Route::get('/cart/count',[ShowpageController::class,'cartCount'])->name('cart.count'); 
 //profile view
 Route::get('/profile',[ProfileController::class,'index'])->name('profile.view');
 Route::post('/profile/update',[ProfileController::class,'update'])->name('profile.update');
