@@ -69,23 +69,23 @@ Route::get('/product/{id}/delete',[ProductController::class,'delete'])->name('pr
 Route::post('/product/{id}/update',[ProductController::class,'update'])->name('product.update');
 
 //admin category
- Route::prefix('category')->group(function(){
-  Route::get('/',[CategoryController::class,'index'])->name('category.index');
-  Route::get('/form',[CategoryController::class,'create'])->name('category.create');
-  Route::post('/form/submit',[CategoryController::class,'store'])->name('category.store');
-  Route::get('/{id}',[CategoryController::class,'edit'])->name('category.edit');
-  Route::post('/{id}/update',[CategoryController::class,'update'])->name('category.update');
-  Route::get('/{id}/delete',[CategoryController::class,'delete'])->name('category.delete');
+Route::prefix('category')->group(function(){
+Route::get('/',[CategoryController::class,'index'])->name('category.index');
+Route::get('/form',[CategoryController::class,'create'])->name('category.create');
+Route::post('/form/submit',[CategoryController::class,'store'])->name('category.store');
+Route::get('/{id}',[CategoryController::class,'edit'])->name('category.edit');
+Route::post('/{id}/update',[CategoryController::class,'update'])->name('category.update');
+Route::get('/{id}/delete',[CategoryController::class,'delete'])->name('category.delete');
   });
 
 
  //group of orders
- Route::prefix('orders')->group(function(){
+Route::prefix('orders')->group(function(){
  //orders
- Route::get('/',[OrderController::class,'index'])->name('order.index');
- Route::get('/{id}',[OrderController::class,'show'])->name('order.view'); // Corrected route definition
+Route::get('/',[OrderController::class,'index'])->name('order.index');
+Route::get('/{id}',[OrderController::class,'show'])->name('order.view'); // Corrected route definition
  //change status ---new
- Route::post('/updatestatus/{id}',[OrderController::class,'changeStatus'])->name('update.status');
+Route::post('/updatestatus/{id}',[OrderController::class,'changeStatus'])->name('update.status');
 
  });
 
@@ -109,10 +109,6 @@ Route::post('/login',[AuthController::class,'login'])->name('login');
 
 //route to display all the session
 Route::get('/test',[MessageController::class,'viewTest']);
-
-
-
-
 //admin message
 Route::get('/message',[MessageController::class,'viewMessage']);
 
