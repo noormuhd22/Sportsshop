@@ -9,13 +9,19 @@
 
 .container{
     height: 900px; 
+    width: 1300px;
+    overflow-x: scroll;
 }
 /* Custom CSS for styling the table */
 .table {
     width: 100%;
     border-collapse: collapse;
+    
    
   
+}
+.table th {
+    color: grey;
 }
 
     .status{

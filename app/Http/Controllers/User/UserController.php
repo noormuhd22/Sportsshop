@@ -13,7 +13,7 @@ class UserController extends Controller
 
 
     public function showloginpage(){
-        return view('userlogin');
+        return view('Userlogin.userlogin');
     }
 
 
@@ -28,7 +28,7 @@ class UserController extends Controller
         $user = Userlogged::where('email', $email)->first();
     
       
-        if ($user && Hash::check($password,$user->password)) {
+if ($user && Hash::check($password,$user->password)) {
 
             //   $request->session()->put('user',$user->id);
               $request->session()->put('user', [
@@ -59,7 +59,7 @@ public function userSignup(request $request){
        'name' => 'required|regex:/^[a-zA-Z]+(?:\s[a-zA-Z]+)*$/|max:255',
        'email' => 'required|email|max:255|unique:userloggeds',
        'password' => 'required|min:8',
-       'mobile' => 'required|numeric'
+       'mobile' => 'required|numeric|unique:userloggeds',
     ]);
 DB::beginTransaction();
 try{
