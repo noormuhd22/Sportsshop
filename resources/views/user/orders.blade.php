@@ -8,9 +8,12 @@
 <style>
 
 .container{
-    height: 900px; 
+    margin-top: 50px;
+    height: 700px; 
     width: 1300px;
     overflow-x: scroll;
+    border: 2px solid rgb(0, 187, 255);
+    border-radius: 12px;
 }
 /* Custom CSS for styling the table */
 .table {
