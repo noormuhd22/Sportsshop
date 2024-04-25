@@ -108,10 +108,10 @@ ul.topnav li.right {
 
 footer {
   background-color:#007bff;
-  color: #fff;
-  padding: 20px 0;
-  text-align: center;
-   margin-top: 80px;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+            margin-top: 80px;
         }
         footer p {
             margin-bottom: 10px;
@@ -133,15 +133,7 @@ footer {
   <li><a href="#"><img src="{{ asset('logo.ico') }}" alt="img">  </a></li>
   <li><a href="/home">Home</a></li>
   <li><a href="{{ route('categories') }}">Categories</a></li>
- 
-  <li class="dropdown" id="settingsDropdown"> <!-- Added id to the dropdown content -->
-  <a href="{{ route('products') }}" id="settingsBtn">Products</a> <!-- Added id to the settings link -->
-  <div class="dropdown-content">
-  <a href="{{ route('football') }}">Football</a> 
-  </div>
-  
-        
-  
+  <li><a href="{{ route('products') }}">Products</a></li>
   <li><a href="{{ route('contactus') }}">Contact us</a></li>
   <li><a href="{{ route('aboutus') }}">About Us</a></li>
  

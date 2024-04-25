@@ -11,7 +11,7 @@ use App\Http\Controllers\Category\CategoryController;
 use App\Http\Controllers\User\PaymentController;
 use App\Http\Controllers\User\OrderstatusController;
 use App\Http\Controllers\User\ProfileController;
-use App\Http\Controllers\User\SportsController;
+
 use App\Http\Controllers\User\Index\ShowpageController;
 use App\Http\Controllers\Adminorders\OrderController;
 use App\Http\Controllers\Adminmessage\MessageController;
@@ -159,7 +159,8 @@ Route::get('/cart',[ShowpageController::class,'viewCart']);
 Route::get('/aboutus',[ShowpageController::class,'viewAboutus'])->name('aboutus');
 
 //football category
-Route::get('/football',[SportsController::class,'index'])->name('football');
+
+
 
 
 
