@@ -35,7 +35,7 @@ class ProductController extends Controller
 {
     // Validate the request data
     $request->validate([
-        'name' => 'required|alpha_num',
+        'name' => 'required',
         'price' => 'required|numeric',
         'categoryname' => 'required|alpha_num',
         'photo' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048', // Adjust the file size limit and accepted file types as needed
@@ -109,7 +109,7 @@ class ProductController extends Controller
 
   public function update(Request $request, $id){
     $request->validate([
-        'name' => 'required|alpha_num',
+        'name' => 'required',
         'price' => 'required|numeric',
         'photo' => ' |image|mimes:jpeg,png,jpg,gif|max:2048', // Adjust the file size limit and accepted file types as needed
     ]);

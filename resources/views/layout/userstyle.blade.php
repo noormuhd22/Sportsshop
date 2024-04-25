@@ -137,8 +137,9 @@ footer {
   <li class="dropdown" id="settingsDropdown"> <!-- Added id to the dropdown content -->
   <a href="{{ route('products') }}" id="settingsBtn">Products</a> <!-- Added id to the settings link -->
   <div class="dropdown-content">
-  <a href="{{ route('sports') }}">Sports Collection</a> 
+  <a href="{{ route('football') }}">Football</a> 
   </div>
+  
         
   
   <li><a href="{{ route('contactus') }}">Contact us</a></li>

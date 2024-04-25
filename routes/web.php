@@ -158,8 +158,8 @@ Route::get('/products',[ShowpageController::class,'viewProducts'])->name('produc
 Route::get('/cart',[ShowpageController::class,'viewCart']);
 Route::get('/aboutus',[ShowpageController::class,'viewAboutus'])->name('aboutus');
 
-//sports category
-Route::get('/sportscollection',[SportsController::class,'index'])->name('sports');
+//football category
+Route::get('/football',[SportsController::class,'index'])->name('football');
 
 
 

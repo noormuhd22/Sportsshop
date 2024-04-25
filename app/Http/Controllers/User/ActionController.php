@@ -71,7 +71,8 @@ public function cart(Request $request) {
     }
 
     
-    return redirect('/products')->with('success', 'Product added successfully');
+    return redirect()->back()->with('success', 'Product added successfully');
+
 }
 
     
