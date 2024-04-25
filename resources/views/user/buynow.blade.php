@@ -162,7 +162,7 @@
                     "amount": amount,
                     "name": "Sports Shop",
                     "description": productname,
-                    "image": "/logo.jpg",
+                    "image": "/logo.ico",
 
                     "handler": function (response) {
                         var paymentid = response.razorpay_payment_id;
