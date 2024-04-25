@@ -39,6 +39,12 @@
       border-radius: 5px;
       border: none;
      }
+     .btn-primary{
+      border: 1px solid white;
+     }
+     .btn-primary:hover{
+      border: 1px solid rgb(255, 255, 255);
+     }
   </style>
 </head>
 <body>

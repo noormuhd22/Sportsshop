@@ -25,6 +25,7 @@
      a button{
       background-color:  #007bff;
       color: white;
+     
       padding:  5px;
      height: 40px;
       margin: 10px;
@@ -34,6 +35,12 @@
      }
      p a{
       color: white;
+     }
+     .btn-primary{
+      border: 1px solid white;
+     }
+     .btn-primary:hover{
+      border: 1px solid rgb(255, 255, 255);
      }
 </style>
 <body>
