@@ -12,7 +12,8 @@ class ShowpageController extends Controller
     
 
     Public function viewHome(Request $request)  {
-        $products = Product::where('status', 0)->get(); 
+        $products = Product::where('status', 0)->take(5)->get();
+ 
 $user = $request->session()->get('user')['name'];
 return view('user.userhome', ['products' => $products,'user'=>$user]);
 

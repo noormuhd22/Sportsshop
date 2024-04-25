@@ -11,7 +11,7 @@ use App\Http\Controllers\Category\CategoryController;
 use App\Http\Controllers\User\PaymentController;
 use App\Http\Controllers\User\OrderstatusController;
 use App\Http\Controllers\User\ProfileController;
-
+use App\Http\Controllers\User\category\UsercategoryController;
 use App\Http\Controllers\User\Index\ShowpageController;
 use App\Http\Controllers\Adminorders\OrderController;
 use App\Http\Controllers\Adminmessage\MessageController;
@@ -141,7 +141,7 @@ Route::get('/logoutuser', function (Request $request) {
 
 
 
- $request->session()->forget('user');
+$request->session()->forget('user');
 return view('userlogin.userlogin');
 })->name('userlogout');
 
@@ -158,8 +158,10 @@ Route::get('/products',[ShowpageController::class,'viewProducts'])->name('produc
 Route::get('/cart',[ShowpageController::class,'viewCart']);
 Route::get('/aboutus',[ShowpageController::class,'viewAboutus'])->name('aboutus');
 
-//football category
 
+//usercategory viewer
+
+Route::get('/category/view/{id}',[UsercategoryController::class,'view'])->name('category.show');
 
 
 

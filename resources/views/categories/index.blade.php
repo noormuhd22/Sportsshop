@@ -8,7 +8,8 @@
         {{ session('success') }}
     </div>
 @endif
-
+<!-- Button to redirect to the add customer form -->
+<a href="/category/form"><button class='btn btn-success'>Add Category</button></a>
 <table class="table">
     <thead>
         <tr>
@@ -38,8 +39,7 @@
     </tbody>
 </table>
 
-<!-- Button to redirect to the add customer form -->
-<a href="/category/form"><button class='btn btn-success'>Add Category</button></a>
+
 
 
 

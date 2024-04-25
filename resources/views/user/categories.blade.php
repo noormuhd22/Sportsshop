@@ -41,7 +41,9 @@
 <div class="category-section">
     @foreach ($categories as $category)
     <div class="category-card">
+        <a href="{{ route('category.show', $category->id) }}">
         <img src="{{ asset('uploads/' . $category->image) }}" alt="Category Image">
+    </a>
         <div class="card-body">
             <h2>{{ $category->name }}</h2>
         </div>
