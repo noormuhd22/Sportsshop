@@ -10,7 +10,7 @@ class UsercategoryController extends Controller
 {
     public function view(Request $request, $id)
     {
-        $user = $request->session()->get('user')['name'];
+        $user = $request->session()->get('user')['id'];
         $category = categories::findOrFail($id);
         $categoryName = $category->name;
         $products = Product::where('categoryname', $categoryName)->get();

@@ -93,6 +93,10 @@
         {{ session('success') }}
     </div>
     @endif
+
+
+    @if (count($products) > 0)
+
     @foreach ($products as $product )
     <div class="product-card">
         <img src="{{ asset('uploads/' . $product->image) }}" alt="image" class="product-image">
@@ -122,6 +126,9 @@
         </div>
     </div>
     @endforeach
+    @else
+    <p>No products</p>
+@endif
     @endsection
 </body>
 </html>
