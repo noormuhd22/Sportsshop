@@ -158,7 +158,12 @@
 
             // Validation checks
             if (name && address && state && city && pincode && mobile && mobile&& pincode) {
-                var amount = parseFloat($j("#totalPrice").text().replace('$', '')) * 100;
+                 var totalPriceText = $j("#totalPrice").text().replace(/[^0-9]/g, '');
+
+            // Parse the total price as a float and multiply by 100 to convert to paise
+            var amount = parseFloat(totalPriceText) * 100;
+
+            console.log("Amount in paise:", amount);
                 var productname = "Your Product Name"; // Update this with your actual product name
                 console.log(amount, productname);
 

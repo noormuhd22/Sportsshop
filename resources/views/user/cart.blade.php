@@ -6,7 +6,9 @@
             width: 80%;
             margin: 0 auto;
             padding: 20px;
-            height: 900px;
+            min-height: 500px;
+            border: 2px solid #007bff;
+            border-radius: 12px;
         }
 
         .container img {
@@ -17,6 +19,7 @@
         table {
             width: 100%;
             border-collapse: collapse;
+           
         }
 
         th,

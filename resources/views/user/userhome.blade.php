@@ -38,17 +38,18 @@
     }
     .content p{
         margin-left: 5%;
+        color: rgb(0, 0, 0);
     }
     ul{
         margin-left: 5%;
     }
     strong{
-        color: rgb(44, 172, 222);
+        color: orange;
     }
 h5{
     margin-top: 50px;
     text-align: center;
-    color:  rgb(44, 172, 222);
+    color:  orange;
 }
 </style>
 <h5>Welcome to SportShop - Your Ultimate Destination for Sports Gear! </h5>

@@ -32,15 +32,17 @@ ul.topnav {
   padding: 0;
   overflow: hidden;
   height: 100px;
-  background-color: #007bff;
+  background-color: rgb(255, 255, 255);
 }
 
 ul.topnav li {float: left;}
 
 ul.topnav li a {
   margin-top: 10px;
+  font-size: 23px;
+   font-weight: 1000;
   display: block;
-  color: rgb(255, 255, 255);
+  color: #007bff;
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
@@ -48,21 +50,21 @@ ul.topnav li a {
 }
 
 .topnav img{
-    border-radius:20px;
+    border-radius:12px;
     height:50px;
     width:50px;
     
 }
 ul.topnav li a:hover:not(.active) {
   transform: translatey(-5px);
-  color: #000000;
+  color:orange;
 }
 
 
 .dropdown-content {
   display: none;
   position: fixed;
-  background-color:#007bff;
+  background-color:white;
   min-width: 160px;
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
   z-index: 1;
@@ -105,7 +107,9 @@ ul.topnav li.right {
   background-color: red;
   border-radius: 5px;
 }
-
+#cartCount{
+  color: white;
+}
 footer {
   background-color:#007bff;
             color: #fff;

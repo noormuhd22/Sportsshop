@@ -25,8 +25,16 @@
         max-width: 600px;
         margin: 0 auto;
     }
-
-   
+h2{
+    font-size: 20px;
+        font-weight: 1000;
+    color: orange;
+}
+   label{
+    font-size: 16px;
+        font-weight: 1000;
+    color: #007bff;
+   }
 
     .contact-us-form input,
     .contact-us-form textarea {

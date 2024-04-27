@@ -32,7 +32,7 @@
 
     .category-card h2 {
         text-align: center;
-        color: green;
+        color:#007bff;
         margin-top: 10px; 
         font-size: 1.5rem; 
     }
