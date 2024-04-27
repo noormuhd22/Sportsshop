@@ -4,6 +4,8 @@
     <title>Product Page</title>
     <style>
         /* Style for the card */
+
+      
         .product-card {
             background-color: #fff;
             border-radius: 10px;
@@ -85,6 +87,9 @@
         .success-message{
             color: green;
         }
+    footer{
+        margin-top: 350px;
+    }
     </style>
 </head>
 <body>
@@ -98,6 +103,7 @@
     @if (count($products) > 0)
 
     @foreach ($products as $product )
+   
     <div class="product-card">
         <img src="{{ asset('uploads/' . $product->image) }}" alt="image" class="product-image">
         <div class="product-details">
@@ -125,10 +131,12 @@
             </form>   
         </div>
     </div>
+   
     @endforeach
     @else
     <p>No products</p>
 @endif
     @endsection
+
 </body>
 </html>
