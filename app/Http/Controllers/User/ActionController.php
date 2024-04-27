@@ -53,8 +53,7 @@ public function cart(Request $request) {
 
     
     if ($existingCart) {
-        $existingCart->quantity += 1; 
-        $existingCart->save();
+        return redirect('/cartview')->with('error', 'Product already exists in the cart');
     } else {
       
         $productid = $request->productId;
@@ -88,7 +87,8 @@ public function deleteCart(request $request){
             if ($cart) {
                 $cart->delete();
           
-              return redirect('/cart')->with('success','product deleted successfully');
+                return redirect()->back()->with('success', 'Product deleted successfully');
+
             } else {
                 
                 return response()->json(['error' => 'Item not found'], 404);

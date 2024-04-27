@@ -155,7 +155,7 @@ Route::get('/home',[ShowpageController::class,'viewHome']) ->name('home');
 Route::get('/categories',[ShowpageController::class,'viewCategory'])->name('categories');
 Route::get('/contactus',[ShowpageController::class,'viewContactus'])->name('contactus');
 Route::get('/products',[ShowpageController::class,'viewProducts'])->name('products');
-Route::get('/cart',[ShowpageController::class,'viewCart']);
+Route::get('/cartview',[ShowpageController::class,'viewCart'])->name('cartview');
 Route::get('/aboutus',[ShowpageController::class,'viewAboutus'])->name('aboutus');
 
 

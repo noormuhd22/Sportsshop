@@ -106,6 +106,7 @@
                             currency_rupee
                             </span>{{ $carts->price }}</td>
                         <td>
+
                             <form id="deleteForm_{{ $carts->id }}" action="{{ route('deletecart') }}" method="post">
                                 @csrf
                                 <input type="hidden" name="productId" value="{{ $carts->id }}">
@@ -114,6 +115,8 @@
                                     <span class="material-symbols-outlined">delete</span>
                                 </button>
                             </form>
+
+
                         </td>
 
 
@@ -147,8 +150,8 @@
                 <tr>
                     <td colspan="5">Total</td>
                     <td id="totalPrice" class="total-price"><span class="material-symbols-outlined" id="rs">
-                        currency_rupee
-                        </span>{{ $totalPrice }}</td>
+                            currency_rupee
+                            </span>{{ $totalPrice }}</td>
                     <td></td>
                 </tr>
             </table>
@@ -166,25 +169,26 @@
 
 
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            const deleteButtons = document.querySelectorAll('.delete-btn');
+      document.addEventListener("DOMContentLoaded", function() {
+    const deleteButtons = document.querySelectorAll('.delete-btn');
 
-            deleteButtons.forEach(function(button) {
-                button.addEventListener('click', function() {
-                    console.log('Delete button clicked');
-                    // Get the form associated with the delete button
-                    const form = button.closest('form');
-                    const formId = form.getAttribute('id').replace('deleteForm_', '');
-                    console.log('Form ID:', formId);
+    deleteButtons.forEach(function(button) {
+        button.addEventListener('click', function() {
+            console.log('Delete button clicked');
+            // Get the form associated with the delete button
+            const form = button.closest('form');
+            const formId = form.getAttribute('id').replace('deleteForm_', '');
+            console.log('Form ID:', formId);
 
-                    // Set the form submission event listener
-                    document.getElementById('confirmDelete').addEventListener('click', function() {
-                        console.log('Confirm delete clicked');
-                        form.submit();
-                    });
-                });
+            // Set the form submission event listener
+            document.getElementById('confirmDelete').addEventListener('click', function() {
+                console.log('Confirm delete clicked');
+                form.submit();
             });
         });
+    });
+});
+
     </script>
 
 
