@@ -32,7 +32,9 @@
         background-color: #ffffff;
         color: grey
     }
-
+    #rs{
+    font-size: 15px;
+}
     @media screen and (max-width: 600px) {
         table {
             width: 100%;
@@ -81,13 +83,19 @@
                         <input type="text" class="form-control" id="quantity_{{ $carts->id }}" value="{{ $carts->quantity }}" readonly>
                     </div>
                 </td>
-                <td class="subtotal" id="subtotal_{{ $carts->id }}">${{ $subtotal }}</td>
-                <td>${{ $carts->price }}</td>
+                <td class="subtotal" id="subtotal_{{ $carts->id }}"><span class="material-symbols-outlined" id="rs">
+                    currency_rupee
+                    </span>{{ $subtotal }}</td>
+                <td><span class="material-symbols-outlined" id="rs">
+                    currency_rupee
+                    </span>{{ $carts->price }}</td>
             </tr>
         @endforeach
         <tr class="total-price">
             <td colspan="4">Total</td>
-            <td id="totalPrice">${{ $totalPrice }}</td>
+            <td id="totalPrice"><span class="material-symbols-outlined" id="rs">
+                currency_rupee
+                </span>{{ $totalPrice }}</td>
             <td></td>
         </tr>
     </table>

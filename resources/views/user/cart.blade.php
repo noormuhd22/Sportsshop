@@ -34,7 +34,9 @@
         tr:hover {
             background-color: #f5f5f5;
         }
-
+#rs{
+    font-size: 15px;
+}
 
         @media screen and (max-width: 600px) {
             table {
@@ -100,7 +102,9 @@
                                 </div>
                             </div>
                         </td>
-                        <td>${{ $carts->price }}</td>
+                        <td><span class="material-symbols-outlined" id="rs">
+                            currency_rupee
+                            </span>{{ $carts->price }}</td>
                         <td>
                             <form id="deleteForm_{{ $carts->id }}" action="{{ route('deletecart') }}" method="post">
                                 @csrf
@@ -133,14 +137,18 @@
                                 </div>
                             </div>
                         </div>
-                        <td class="subtotal" id="subtotal_{{ $carts->id }}">${{ $subtotal }}</td>
+                        <td class="subtotal" id="subtotal_{{ $carts->id }}"><span class="material-symbols-outlined" id="rs">
+                            currency_rupee
+                            </span>{{ $subtotal }}</td>
 
 
                     </tr>
                 @endforeach
                 <tr>
                     <td colspan="5">Total</td>
-                    <td id="totalPrice" class="total-price">${{ $totalPrice }}</td>
+                    <td id="totalPrice" class="total-price"><span class="material-symbols-outlined" id="rs">
+                        currency_rupee
+                        </span>{{ $totalPrice }}</td>
                     <td></td>
                 </tr>
             </table>
