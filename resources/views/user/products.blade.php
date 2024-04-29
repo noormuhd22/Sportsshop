@@ -85,6 +85,9 @@
         .success-message{
             color: green;
         }
+        #size{
+            font-size: 16px;
+        }
     </style>
 </head>
 <body>
@@ -99,7 +102,7 @@
         <div class="product-details">
             <h2 class="product-title">{{ $product->name }}</h2>
             <p class="product-description">{{ $product->description }}</p>
-            <span class="material-symbols-outlined" id="size">currency_rupee</span><p class="product-price">{{ $product->price }}</p>
+            <p class="product-price"><span class="material-symbols-outlined" id="size">currency_rupee</span>{{ $product->price }}</p>
            
             <form action="{{ route('buynow.checkout') }}" method="post">
                 @csrf

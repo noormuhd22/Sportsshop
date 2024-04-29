@@ -97,7 +97,7 @@
                                     <button class="btn btn-outline-secondary minus-btn" type="button"
                                         onclick="decrementQuantity({{ $carts->id }})">-</button>
                                 </div>
-                                <input type="text" class="form-control" id="quantity_{{ $carts->id }}"
+                                <input type="text" class="form-control" style="width: 10px" id="quantity_{{ $carts->id }}"
                                     value="{{ $carts->quantity }}" readonly>
                                 <div class="input-group-append">
                                     <button class="btn btn-outline-secondary plus-btn" type="button"
