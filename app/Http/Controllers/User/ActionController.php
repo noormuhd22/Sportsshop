@@ -98,23 +98,22 @@ public function deleteCart(request $request){
     
 
 
-
-
-public function updateQuantity(Request $request)
-{
-    $productId = $request->input('productId');
+    public function updateQuantity(Request $request)
+    {
+        $productId = $request->input('productId');
     $newQuantity = $request->input('quantity');
-
-    // Update the quantity of the product in the cart table
-    $cartItem = Cart::where('id', $productId)->first();
-    if ($cartItem) {
-        $cartItem->quantity = $newQuantity;
-        $cartItem->save();
-        return redirect('/cart');
-    } else {
-        return response()->json(['success' => false, 'message' => 'Product not found in the cart']);
+    
+        // Update the quantity of the product in the cart table
+        $cartItem = Cart::where('productid',$productId)->first();
+        if ($cartItem) {
+            $cartItem->quantity = $newQuantity;
+            $cartItem->save();
+            return response()->json(['success' => true, 'message' => 'Quantity updated successfully']);
+        } else {
+            return response()->json(['success' => false, 'message' => 'Product not found in the cart']);
+        }
     }
-}
+    
 
 public function checkout(Request $request){
     

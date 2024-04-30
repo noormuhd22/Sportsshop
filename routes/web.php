@@ -170,7 +170,7 @@ Route::get('/category/view/{id}',[UsercategoryController::class,'view'])->name('
 Route::post('/cart',[ActionController::class,'cart'])->name('cart');
 Route::post('/contactus/submit', [ActionController::class,'submitForm'])->name('submitform');
 Route::post('cart/delete',[ActionController::class,'deleteCart'])->name('deletecart');
-Route::post('/update-quantity', [ActionController::class,'updateQuantity'])->name('update-quantity');
+Route::post('/updatequantity', [ActionController::class,'updateQuantity'])->name('update-quantity');
 Route::get('cart/checkout', [ActionController::class, 'checkout'])->name('checkout');
 Route::post('/buynow/checkout',[ActionController::class,'buynowCheckout'])->name('buynow.checkout');
  

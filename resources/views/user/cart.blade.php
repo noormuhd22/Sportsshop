@@ -40,6 +40,10 @@
 #rs{
     font-size: 15px;
 }
+.width_form{
+    width:30px;
+    text-align: center;
+}
 
         @media screen and (max-width: 600px) {
             table {
@@ -95,19 +99,19 @@
                             <div class="input-group">
                                 <div class="input-group-prepend">
                                     <button class="btn btn-outline-secondary minus-btn" type="button"
-                                        onclick="decrementQuantity({{ $carts->id }})">-</button>
+                                        onclick="decrementQuantity({{ $carts->productid }})">-</button>
                                 </div>
-                                <input type="text" class="form-control" style="width: 10px" id="quantity_{{ $carts->id }}"
+                                <input type="text" class="width_form" id="quantity_{{ $carts->productid }}"
                                     value="{{ $carts->quantity }}" readonly>
                                 <div class="input-group-append">
                                     <button class="btn btn-outline-secondary plus-btn" type="button"
-                                        onclick="incrementQuantity({{ $carts->id }})">+</button>
+                                        onclick="incrementQuantity({{ $carts->productid }})">+</button>
                                 </div>
                             </div>
                         </td>
-                        <td><span class="material-symbols-outlined" id="rs">
-                            currency_rupee
-                            </span>{{ $carts->price }}</td>
+                        <td class="price" id="price_{{ $carts->productid }}">{{ $carts->price }}</td>
+
+                  
                         <td>
 
                             <form id="deleteForm_{{ $carts->id }}" action="{{ route('deletecart') }}" method="post">
@@ -143,7 +147,7 @@
                                 </div>
                             </div>
                         </div>
-                        <td class="subtotal" id="subtotal_{{ $carts->id }}"><span class="material-symbols-outlined" id="rs">
+                        <td class="subtotal" id="subtotal_{{ $carts->productid }}"><span class="material-symbols-outlined" id="rs">
                             currency_rupee
                             </span>{{ $subtotal }}</td>
 
@@ -166,109 +170,128 @@
 
 
 
+<script>
+    function incrementQuantity(productId) {
+    var quantityField = document.getElementById('quantity_' + productId);
+    var currentQuantity = parseInt(quantityField.value);
+    var newQuantity = currentQuantity + 1;
+    quantityField.value = newQuantity;
 
+    console.log('New Quantity:', newQuantity);
+    console.log('New producid:', productId);
 
+    updateQuantity(productId, newQuantity);
+}
 
+function decrementQuantity(productId) {
+    var quantityField = document.getElementById('quantity_' + productId);
+    var currentQuantity = parseInt(quantityField.value);
+    if (currentQuantity > 1) {
+        var newQuantity = currentQuantity - 1;
+        quantityField.value = newQuantity;
 
-
-    <script>
-      document.addEventListener("DOMContentLoaded", function() {
-    const deleteButtons = document.querySelectorAll('.delete-btn');
-
-    deleteButtons.forEach(function(button) {
-        button.addEventListener('click', function() {
-            console.log('Delete button clicked');
-            // Get the form associated with the delete button
-            const form = button.closest('form');
-            const formId = form.getAttribute('id').replace('deleteForm_', '');
-            console.log('Form ID:', formId);
-
-            // Set the form submission event listener
-            document.getElementById('confirmDelete').addEventListener('click', function() {
-                console.log('Confirm delete clicked');
-                form.submit();
-            });
-        });
+        console.log('New Quantity:', newQuantity);
+        console.log('New producid:', productId);
+        
+        updateQuantity(productId, newQuantity);
+    }
+}function updatePageTotalPrice() {
+    var total = 0;
+    var subtotals = document.querySelectorAll('.subtotal');
+    subtotals.forEach(function(subtotal) {
+        total += parseFloat(subtotal.textContent);
     });
+
+    var totalPriceField = document.getElementById('totalPrice');
+    totalPriceField.textContent = total.toFixed(2); // Display price without any symbol
+}
+
+function updateTotalPrice(productId, newQuantity) {
+    var priceElement = document.getElementById('price_' + productId);
+    if (priceElement) {
+        var pricePerItem = parseFloat(priceElement.textContent);
+        var subtotalField = document.getElementById('subtotal_' + productId);
+
+        var newSubtotal = pricePerItem * newQuantity;
+        subtotalField.textContent = newSubtotal.toFixed(2); // Display price without any symbol
+    } else {
+        console.error('Price element not found for productId:', productId);
+    }
+}
+
+
+function updateQuantity(productId, newQuantity) {
+    var formData = new FormData();
+    formData.append('productId', productId);
+    formData.append('quantity', newQuantity);
+
+    console.log('Updating quantity for productId:', productId);
+    console.log('New quantity:', newQuantity);
+
+    fetch("{{ route('update-quantity') }}", {
+        method: 'POST',
+        body: formData,
+        headers: {
+            'X-CSRF-Token': '{{ csrf_token() }}'
+        }
+    })
+    .then(response => {
+        if (response.ok) {
+            // Update UI if necessary
+            updateTotalPrice(productId, newQuantity);
+            updatePageTotalPrice();
+        } else {
+            console.error('Failed to update quantity');
+        }
+    })
+    .catch(error => console.error('Error:', error));
+}
+
+
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+  const deleteButtons = document.querySelectorAll('.delete-btn');
+
+  deleteButtons.forEach(function(button) {
+      button.addEventListener('click', function() {
+          console.log('Delete button clicked');
+          // Get the form associated with the delete button
+          const form = button.closest('form');
+          const formId = form.getAttribute('id').replace('deleteForm_', '');
+          console.log('Form ID:', formId);
+
+          // Set the form submission event listener
+          document.getElementById('confirmDelete').addEventListener('click', function() {
+              console.log('Confirm delete clicked');
+              form.submit();
+          });
+      });
+  });
 });
 
-    </script>
+  </script>
 
-
-
-
-
-
-
-
-
-
-    <script>
-        function incrementQuantity(productId) {
-            var quantityField = document.getElementById('quantity_' + productId);
-            var currentQuantity = parseInt(quantityField.value);
-            var newQuantity = currentQuantity + 1;
-            quantityField.value = newQuantity;
-
-
-            updateQuantity(productId, newQuantity);
-        }
-
-        function decrementQuantity(productId) {
-            var quantityField = document.getElementById('quantity_' + productId);
-            var currentQuantity = parseInt(quantityField.value);
-            if (currentQuantity > 1) {
-                var newQuantity = currentQuantity - 1;
-                quantityField.value = newQuantity;
-
-
-                updateQuantity(productId, newQuantity);
-            }
-        }
-
-        function updatePageTotalPrice() {
-            var total = 0;
-            var subtotals = document.querySelectorAll('.subtotal');
-            subtotals.forEach(function(subtotal) {
-                total += parseFloat(subtotal.textContent);
-            });
-
-            var totalPriceField = document.getElementById('totalPrice');
-            totalPriceField.textContent = total.toFixed(2);
-        }
-
-        function updateTotalPrice(productId, newQuantity) {
-            var pricePerItem = parseFloat(document.getElementById('price_' + productId).textContent);
-            var subtotalField = document.getElementById('subtotal_' + productId);
-
-            var newSubtotal = pricePerItem * newQuantity;
-            subtotalField.textContent = newSubtotal.toFixed(2);
-        }
-    </script>
-
-    <script>
-        function updateQuantity(productId, newQuantity) {
-            var formData = new FormData();
-            formData.append('productId', productId);
-            formData.append('quantity', newQuantity);
-
-            fetch("{{ route('update-quantity') }}", {
-                    method: 'POST',
-                    body: formData,
-                    headers: {
-                        'X-CSRF-Token': '{{ csrf_token() }}'
-                    }
-                })
-                .then(response => {
-                    if (response.ok) {
-                        // Update UI if necessary
-                        updateTotalPrice(productId, newQuantity);
-                        updatePageTotalPrice();
-                    } else {
-                        console.error('Failed to update quantity');
-                    }
-                })
-                .catch(error => console.error('Error:', error));
-        }
-    </script>
 @endsection
