@@ -124,7 +124,9 @@ footer {
             color: #fff;
             text-decoration: none;
         }
-
+#sizes,#settingsBtn{
+  font-size: 30px;
+}
 @media screen and (max-width: 600px) {
   ul.topnav li.right, 
   ul.topnav li {float: none;}
@@ -142,7 +144,7 @@ footer {
   <li><a href="{{ route('aboutus') }}">About Us</a></li>
  
   
-  <li class="right"><a href="{{ route('cartview') }}"><span class="material-symbols-outlined">shopping_cart</span> <span id="cartCount"></span></a></li>
+  <li class="right" ><a href="{{ route('cartview') }}"><span class="material-symbols-outlined" id="sizes">shopping_cart</span> <span id="cartCount"></span></a></li>
   <li class="right dropdown" id="settingsDropdown"> <!-- Added id to the dropdown content -->
     <a href="#" class="material-symbols-outlined" id="settingsBtn">settings</a> <!-- Added id to the settings link -->
     <div class="dropdown-content">

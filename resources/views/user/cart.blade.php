@@ -43,8 +43,20 @@
 .width_form{
     width:30px;
     text-align: center;
+    border: 2px solid #007bff;
+    margin-left: 5px;
+    margin-right: 5px;
 }
 
+
+.minus-btn,.plus-btn{
+    border: 2px solid orange;
+    border-radius: 10px;
+}
+
+footer{
+    margin-top: 210px;
+}
         @media screen and (max-width: 600px) {
             table {
                 width: 100%;
@@ -74,6 +86,7 @@
     
     <div class="container">
         @if (count($cart) > 0)
+        <h1 class="w3-jumbo"><b>Cart</b></h1>
             <table>
                 <tr>
                     <th>Description</th>
@@ -102,14 +115,16 @@
                                         onclick="decrementQuantity({{ $carts->productid }})">-</button>
                                 </div>
                                 <input type="text" class="width_form" id="quantity_{{ $carts->productid }}"
-                                    value="{{ $carts->quantity }}" readonly>
+                                    value="{{ $carts->quantity }}"readonly>
+
+
                                 <div class="input-group-append">
                                     <button class="btn btn-outline-secondary plus-btn" type="button"
                                         onclick="incrementQuantity({{ $carts->productid }})">+</button>
                                 </div>
                             </div>
                         </td>
-                        <td class="price" id="price_{{ $carts->productid }}">{{ $carts->price }}</td>
+                          <td class="price" id="price_{{ $carts->productid }}" >{{ $carts->price }}</td>
 
                   
                         <td>
@@ -147,18 +162,14 @@
                                 </div>
                             </div>
                         </div>
-                        <td class="subtotal" id="subtotal_{{ $carts->productid }}"><span class="material-symbols-outlined" id="rs">
-                            currency_rupee
-                            </span>{{ $subtotal }}</td>
+                        <td class="subtotal" id="subtotal_{{ $carts->productid }}">{{ $subtotal }}</td>
 
 
                     </tr>
                 @endforeach
                 <tr>
                     <td colspan="5">Total</td>
-                    <td id="totalPrice" class="total-price"><span class="material-symbols-outlined" id="rs">
-                            currency_rupee
-                            </span>{{ $totalPrice }}</td>
+                    <td id="totalPrice" class="total-price">{{ $totalPrice }}</td>
                     <td></td>
                 </tr>
             </table>
@@ -195,7 +206,9 @@ function decrementQuantity(productId) {
         
         updateQuantity(productId, newQuantity);
     }
-}function updatePageTotalPrice() {
+}
+
+function updatePageTotalPrice() {
     var total = 0;
     var subtotals = document.querySelectorAll('.subtotal');
     subtotals.forEach(function(subtotal) {
