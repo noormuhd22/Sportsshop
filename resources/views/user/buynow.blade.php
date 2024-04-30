@@ -56,7 +56,8 @@
 @endif
 
 <div class="container">
-    <h3>Order Details</h3>
+    <h3 class="w3-jumbo"><b>Order Details</b></h3>
+
     <table>
         <tr>
             <th></th>
@@ -96,7 +97,7 @@
     <br>
     <br>
     <br>
-    <h4>Delivery Details</h4>
+    <h3 class="w3-jumbo"><b>Delivery Details</b></h3>
 
     <div class="form-group">
         <form id="checkoutForm" action="" method="post">

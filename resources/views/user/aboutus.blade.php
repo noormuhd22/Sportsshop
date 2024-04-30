@@ -3,6 +3,13 @@
 @section('section')
 
 <style>
+
+    .sec{
+    margin-left: auto;
+    margin-right: auto;
+    width: 1400px;
+    }
+
     .sec h2{
         margin-top: 90px;
         font-size: 50px;
