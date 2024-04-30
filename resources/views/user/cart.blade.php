@@ -216,7 +216,7 @@ function updatePageTotalPrice() {
     });
 
     var totalPriceField = document.getElementById('totalPrice');
-    totalPriceField.textContent = total.toFixed(2); // Display price without any symbol
+    totalPriceField.textContent = total; // Display price without any symbol
 }
 
 function updateTotalPrice(productId, newQuantity) {
@@ -226,7 +226,7 @@ function updateTotalPrice(productId, newQuantity) {
         var subtotalField = document.getElementById('subtotal_' + productId);
 
         var newSubtotal = pricePerItem * newQuantity;
-        subtotalField.textContent = newSubtotal.toFixed(2); // Display price without any symbol
+        subtotalField.textContent = newSubtotal; // Display price without any symbol
     } else {
         console.error('Price element not found for productId:', productId);
     }

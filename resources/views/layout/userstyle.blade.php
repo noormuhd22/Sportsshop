@@ -104,7 +104,7 @@ ul.topnav li.right {
   padding: 8px 16px;
   text-decoration: none;
   transition: transform 0.3s ease;
-  background-color: red;
+  background-color: orange;
   border-radius: 5px;
 }
 #cartCount{
