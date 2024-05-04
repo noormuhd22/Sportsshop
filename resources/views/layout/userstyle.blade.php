@@ -7,6 +7,7 @@
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 <meta name="csrf-token" content="{{ csrf_token() }}">
 
@@ -161,7 +162,9 @@ footer {
 
   
 <footer>
-  <p>Contact us at +918137850467 or <a href="mailto:[Noormuhammed12345678@gmail.com]">Noormuhammed12345678@gmail.com</a>. Visit us at Street Address, City, State, Zip Code. Follow us on [Social Media Handle] for updates and promotions.</p>
+  <p>Contact us </p>
+  <p>Phone:<a href="tel:+918137850467">+91 8137850467</a> | Email:<a href="mailto:[Noormuhammed12345678@gmail.com]">Noormuhammed12345678@gmail.com</a>|
+     Adress: N.A.D Signalbusstop, Ernakulam, Kerala, 683563| Follow us on instagram for updates and promotions <a href="https://www.instagram.com/n00r.muhd/?hl=en">  <i style="font-size:24px" class="fa">&#xf16d;</i></a>  </p>
   <p>&copy; 2024 Sports Shop . All rights reserved.</p>
 </footer>
 
