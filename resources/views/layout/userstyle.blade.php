@@ -19,9 +19,9 @@ body {
 #cartCount{
   background-color: red;
   border-radius: 50%;
-  height: 15px;
-  width: 15px;
-  padding: 4px;
+  width: 10px;
+  padding: 2px 6px;
+ /* margin-bottom: 10px; */
   font-size: 13px;
 
 
