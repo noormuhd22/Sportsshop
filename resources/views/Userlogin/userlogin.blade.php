@@ -50,10 +50,10 @@
     {{ session('success') }}
 </div>
 @endif
-<a href="/"><button >Back</button></a>
+
   <div class="container ">
     
-          <h4>Login Page</h4>
+    <h2 class="w3-jumbo"><b>Login form</b></h2>
           
           
             <form action="{{ route('userlogin') }}" method="POST">

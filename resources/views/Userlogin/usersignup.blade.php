@@ -30,7 +30,7 @@
 <body>
   <div class="container ">
    
-        <h4>Create Account</h4>
+    <h2 class="w3-jumbo"><b>Sign up</b></h2>
           
          
             <form action="{{ route('usersignup') }}" method="POST">
