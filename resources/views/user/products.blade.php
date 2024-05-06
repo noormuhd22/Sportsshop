@@ -72,10 +72,7 @@
             cursor: pointer;
             transition: background-color 0.3s ease;
         }
-        .cart-button[disabled] {
-            background-color: #6c757d;
-            cursor: not-allowed;
-        }
+       
         .cart-button:hover{
             background-color: #2ebf4f;
         }
