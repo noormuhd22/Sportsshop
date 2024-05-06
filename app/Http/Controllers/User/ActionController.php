@@ -53,8 +53,7 @@ public function cart(Request $request) {
 
     
     if ($existingCart) {
-        return redirect('/cartview')->with('error', 'Product already exists in the cart');
-    } else {
+        return redirect('/cartview')->with('error', 'Product already exists in the cart')->with('buttonText', $request->buttonText);    } else {
       
         $productid = $request->productId;
         $product = Product::where('id', $productid)->first();

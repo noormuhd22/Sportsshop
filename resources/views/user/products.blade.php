@@ -92,7 +92,7 @@
 </head>
 <body>
     @if(session('success'))
-    <div class="success-message">
+    <div class="alert alert-success">
         {{ session('success') }}
     </div>
     @endif
