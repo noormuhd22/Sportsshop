@@ -12,7 +12,7 @@
         }
         .container {
             text-align: center;
-            margin-top: 100px;
+            margin-top: 200px;
             font-family: 'Poppins', sans-serif;
         }
         .logo {
@@ -21,17 +21,18 @@
             border-radius: 12px;
         }
         .btn-login {
-            background-color: #007bff;
-            color: #fff;
-            border: none;
+            background-color: #ffffff;
+            color: #007bff;
+            border: 2px solid #007bff;
             padding: 10px 20px;
             font-size: 20px;
             cursor: pointer;
             border-radius: 5px;
+            margin-left: 10px;
             transition: background-color 0.3s ease;
         }
         .btn-login:hover {
-            background-color: #0056b3;
+            background-color: #007bff;
         }
         h2 {
             text-align: center;
