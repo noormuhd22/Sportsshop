@@ -13,10 +13,11 @@
   .container{
         width: 500px;
         margin-top: 200px;
-        background-color: #007bff;
-        color:white;
+        background-color: #ffffff;
+        color:#007bff;
     padding: 20px;
-    border-radius: 5px;
+    border-radius: 12px;
+    border: 2px solid #007bff;
     box-shadow: 0 0 10px rgba(0, 0, 10, 0.67);
     }
      h4{
@@ -34,7 +35,7 @@
       border: none;
      }
      p a{
-      color: white;
+      color: #007bff;
      }
      .btn-primary{
       border: 1px solid white;
@@ -53,7 +54,7 @@
 
   <div class="container ">
     
-    <h2 class="w3-jumbo"><b>Login form</b></h2>
+    <h2 class="w3-jumbo"><b>Login </b></h2>
           
           
             <form action="{{ route('userlogin') }}" method="POST">
@@ -83,7 +84,7 @@
               <button type="submit" class="btn btn-primary">login</button>
             </form>
             <div class="mt-3">
-              <p>Create an account <a href="{{ route('usersignuppage') }}">Signup</a></p>
+              <p>Create an account ? <a href="{{ route('usersignuppage') }}">Signup</a></p>
             </div>
           </div>
         </div>

@@ -11,14 +11,15 @@
  .container{
         width: 500px;
         margin-top: 200px;
-        background-color: #007bff;
-        color:white;
+        background-color: #ffffff;
+        color:#007bff;
     padding: 20px;
-    border-radius: 5px;
+    border-radius: 12px;
+    border: 2px solid #007bff;
     box-shadow: 0 0 10px rgba(0, 0, 10, 0.67);
     }
     p a {
-      color: white;
+      color: #007bff;
     }
     .btn-primary{
       border: 1px solid white;
