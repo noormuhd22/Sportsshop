@@ -3,18 +3,33 @@
 @section('section')
 <style>
     .carousel {
-        margin-top: 50px; 
+        margin-top: 20px; 
+    }
+
+    .carousel-inner{
+        width: 80%;
+        margin-left: auto;
+        margin-right: auto;
+        border-radius: 20px;
     }
 
     .carousel-inner .carousel-item img {
-        height: 500px;
+        height: 600px;
         width: 100%; 
         object-fit: cover; 
         border-radius: 12px;
     }
 
+.carousel-control-prev{
+    margin-left: 200px;
+}
+.carousel-control-next{
+    margin-right: 200px;
+}
+
     .carousel-control-prev, .carousel-control-next {
         width: 5%; 
+      
     }
 
     .carousel-control-prev-icon, .carousel-control-next-icon {
@@ -39,9 +54,13 @@
     .content p{
         margin-left: 5%;
         color: rgb(0, 0, 0);
+        font-size: 20px;
+        font-weight: 400;
     }
     ul{
         margin-left: 5%;
+        font-size: 20px;
+        font-weight: 400;
     }
     strong{
         color: orange;
