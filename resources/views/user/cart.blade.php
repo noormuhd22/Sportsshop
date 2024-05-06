@@ -192,8 +192,8 @@ footer{
     var newQuantity = currentQuantity + 1;
     quantityField.value = newQuantity;
 
-    console.log('New Quantity:', newQuantity);
-    console.log('New producid:', productId);
+    // console.log('New Quantity:', newQuantity);
+    // console.log('New producid:', productId);
 
     updateQuantity(productId, newQuantity);
 }
@@ -205,8 +205,8 @@ function decrementQuantity(productId) {
         var newQuantity = currentQuantity - 1;
         quantityField.value = newQuantity;
 
-        console.log('New Quantity:', newQuantity);
-        console.log('New producid:', productId);
+        // console.log('New Quantity:', newQuantity);
+        // console.log('New producid:', productId);
         
         updateQuantity(productId, newQuantity);
     }
@@ -242,8 +242,8 @@ function updateQuantity(productId, newQuantity) {
     formData.append('productId', productId);
     formData.append('quantity', newQuantity);
 
-    console.log('Updating quantity for productId:', productId);
-    console.log('New quantity:', newQuantity);
+    // console.log('Updating quantity for productId:', productId);
+    // console.log('New quantity:', newQuantity);
 
     fetch("{{ route('update-quantity') }}", {
         method: 'POST',
