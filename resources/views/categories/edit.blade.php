@@ -3,8 +3,16 @@
 
 @section('post')
 
+<style>
+      .table-responsive{
+        border: 2px solid rgb(246, 43, 43);
+        border-radius: 12px;
+        overflow-x: auto;
+        padding: 20px;
+    }
+</style>
 
-
+<div class="table-responsive">
 <form method="POST" action="{{route('category.update', ['id' => $categories->id]) }}" enctype="multipart/form-data">
     @csrf
 
@@ -32,5 +40,5 @@
 
     <button type="submit" class="btn btn-primary">Submit</button>
 </form>
-
+</div>
 @endsection

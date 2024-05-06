@@ -1,6 +1,14 @@
 @extends('layout.theme')
 
 @section('post')
+
+<style>
+    .table-responsive{
+        border: 2px solid rgb(246, 43, 43);
+        border-radius: 12px;
+        overflow-x: auto;
+    }
+</style>
 <div class="table-responsive">
     <table class="table table-bordered">
         <thead>

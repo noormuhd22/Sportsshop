@@ -4,8 +4,7 @@
     img{
         height: 300px;
         width: 300px;
-      margin-left: 90px;
-        border-radius:12px;
+       border-radius:12px;
 
     }
   .section{
@@ -15,12 +14,15 @@
   }
     .box{
       padding: 10px;
-      border: 2px solid rgb(52, 224, 236);
+      border: 2px solid rgb(246, 43, 43);
       width: 200px;
+    }
+    h1{
+      color: rgb(246, 43, 43);
     }
 </style>
 <h1>Welcome to My Website</h1>
-<p>This is a paragraph below the navigation bar.</p>
+
 
 
 <div class="section">

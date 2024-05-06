@@ -1,11 +1,20 @@
 @extends("layout.theme")
 @section("post")
 
-@if (session('success'))
-    <div class="alert alert-success">
-        {{ session('success') }}
-    </div>
-@endif
+<style>
+    .table-responsive{
+             border: 2px solid rgb(246, 43, 43);
+        border-radius: 12px;
+        overflow-x: auto;
+     
+    }
+</style>
+
+
+
+<div class="table-responsive">
+
+    
 <table class="table">
     <thead>
         <tr>
@@ -29,6 +38,6 @@
         @endforeach
     </tbody>
 </table>
-
+</div>
 
 @endsection

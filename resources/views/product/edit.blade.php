@@ -1,6 +1,16 @@
 @extends('layout.theme')
 @section('post')
 
+<style>
+      .table-responsive{
+        border: 2px solid rgb(246, 43, 43);
+        border-radius: 12px;
+        overflow-x: auto;
+        padding: 20px;
+    }
+</style>
+
+<div class="table-responsive">
 <form method="POST" id="edit_product" action="{{ route('product.update', ['id'=>$product->id]) }}" enctype="multipart/form-data">
     @csrf
     <input type="hidden" name="id" value="{{ $product->id }}">
@@ -57,5 +67,5 @@
 
     <button type="submit" class="btn btn-primary">Submit</button>
 </form>
-
+</div>
 @endsection

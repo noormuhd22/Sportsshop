@@ -1,8 +1,14 @@
 @extends('layout.theme')
 @section('post')
 
-
-
+<style>
+     .table-responsive{
+        border: 2px solid rgb(246, 43, 43);
+        border-radius: 12px;
+        overflow-x: auto;
+        padding: 20px;
+    }
+</style>
 @if (session('success'))
     <div class="alert alert-success">
         {{ session('success') }}
@@ -10,6 +16,10 @@
 @endif
 <!-- Button to redirect to the add customer form -->
 <a href="/category/form"><button class='btn btn-success'>Add Category</button></a>
+<br>
+<br>
+<br>
+<div class="table-responsive">
 <table class="table">
     <thead>
         <tr>
@@ -38,7 +48,7 @@
         @endforeach
     </tbody>
 </table>
-
+</div>
 
 
 

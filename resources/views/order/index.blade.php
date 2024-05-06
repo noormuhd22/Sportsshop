@@ -12,7 +12,7 @@
         border-radius: 12px;
         overflow-x: auto;
         margin-right: 100px; /* Adjust as needed */
-        border: 2px solid rgb(0, 187, 255);
+        border: 2px solid rgb(246, 43, 43);
     }
 </style>
 
