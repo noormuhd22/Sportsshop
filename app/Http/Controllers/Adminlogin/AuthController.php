@@ -45,7 +45,7 @@ class AuthController extends Controller
             DB::commit();
     
             // Redirect after successful signup
-            return redirect('/loginpage')->with('success', 'User created successfully!');
+            return redirect('/admin')->with('success', 'User created successfully!');
         } catch (\Exception $e) {
             // Rollback transaction if an exception occurs
             DB::rollback();

@@ -17,7 +17,7 @@ class IsAdmin
     public function handle(Request $request, Closure $next)
     {
         if(!$request->session()->get('admin')){
-            return redirect('/loginpage');
+            return redirect('/admin');
         }
 
         return $next($request);

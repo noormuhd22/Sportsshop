@@ -101,7 +101,7 @@ Route::get('/logout',[AuthController::class,'logout'])->name('logout');
 
 Route::get('/showsignup',[AuthController::class,'showsignup'])->name('signuppage');
 Route::post('/signup',[AuthController::class,'signup'])->name('signup');
-Route::get('/loginpage',[AuthController::class,'loginpage'])->name('loginpage');
+Route::get('/admin',[AuthController::class,'loginpage'])->name('loginpage');
 Route::post('/login',[AuthController::class,'login'])->name('login');
 
 

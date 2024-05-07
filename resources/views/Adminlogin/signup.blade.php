@@ -88,7 +88,7 @@
               <button type="submit" class="btn btn-primary btn-signup">Signup</button>
             </form>
             <div class="mt-3">
-              <p>Already have an account? <a href="/loginpage">Login</a></p>
+              <p>Already have an account? <a href="/admin">Login</a></p>
             </div>
           </div>
         </div>
